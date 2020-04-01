@@ -9,8 +9,9 @@ import Functions as fn
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
+gi.require_version('Wnck', '3.0')
 
-from gi.repository import Gtk, GdkPixbuf, Gdk  # noqa
+from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck  # noqa
 
 
 class TransparentWindow(Gtk.Window):
@@ -20,7 +21,7 @@ class TransparentWindow(Gtk.Window):
     cmd_lock = "betterlockscreen -l dimblur"
 
     def __init__(self):
-        Gtk.Window.__init__(self)
+        Gtk.Window.__init__(self, title="Arcolinux Logout")
         self.set_size_request(300, 220)
 
         self.connect('destroy', Gtk.main_quit)
@@ -133,5 +134,13 @@ class TransparentWindow(Gtk.Window):
         fn.os.system(cmdline)
 
 
-TransparentWindow()
-Gtk.main()
+window_list = Wnck.Screen.get_default().get_windows()
+state = False
+for win in window_list:
+    if "Arcolinux Logout" in win.get_name():
+        state = True
+if not state:
+    TransparentWindow()
+    Gtk.main()
+else:
+    print("something,")

@@ -7,6 +7,7 @@ import subprocess
 import os
 from pathlib import Path
 import configparser
+
 home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 # here = Path(__file__).resolve()
@@ -30,15 +31,15 @@ def get_config(self, Gdk, config):
 
     # Set some safe defaults
     self.opacity = 0.6
-    self.bgcolor = "#000000"
-    self.r = 0
-    self.g = 0
-    self.b = 0
 
     # Check if we're using HAL, and init it as required.
     if self.parser.has_section("settings"):
         if self.parser.has_option("settings", "opacity"):
             self.opacity = int(self.parser.get("settings", "opacity"))/100
+
+    if self.parser.has_section("commands"):
+        if self.parser.has_option("commands", "lock"):
+            self.cmd_lock = self.parser.get("commands", "lock")
 
 
 def _get_logout():
