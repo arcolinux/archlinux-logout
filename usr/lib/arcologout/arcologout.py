@@ -22,10 +22,10 @@ class TransparentWindow(Gtk.Window):
     cmd_lock = "betterlockscreen -l dimblur"
 
     def __init__(self):
-        Gtk.Window.__init__(self, title="Arcolinux Logout")
+        super(TransparentWindow, self).__init__(title="Arcolinux Logout")
         self.set_size_request(300, 220)
 
-        self.connect('destroy', Gtk.main_quit)
+        self.connect('destroy', self.on_close)
         self.connect('draw', self.draw)
         self.connect("key-press-event", self.on_keypress)
         self.connect("window-state-event", self.on_window_state_event)
@@ -42,7 +42,9 @@ class TransparentWindow(Gtk.Window):
         self.fullscreen()
         self.set_app_paintable(True)
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk)
-        self.show_all()
+        if not fn.os.path.isfile("/tmp/arcologout.lock"):
+            with open("/tmp/arcologout.lock", "w") as f:
+                f.write("")
 
     def on_mouse_in(self, widget, event, data):
         if data == "S":
@@ -110,22 +112,27 @@ class TransparentWindow(Gtk.Window):
     def click_button(self, widget, data=None):
         if (data == 'L'):
             command = fn._get_logout()
+            fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(command)
             Gtk.main_quit()
 
         elif (data == 'R'):
+            fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_restart)
             Gtk.main_quit()
 
         elif (data == 'S'):
+            fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_shutdown)
             Gtk.main_quit()
 
         elif (data == 'U'):
+            fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_suspend)
             Gtk.main_quit()
 
         elif (data == 'H'):
+            fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_hibernate)
             Gtk.main_quit()
 
@@ -136,22 +143,28 @@ class TransparentWindow(Gtk.Window):
                 t.daemon = True
                 t.start()
             else:
+                fn.os.unlink("/tmp/arcologout.lock")
                 self.__exec_cmd(self.cmd_lock)
                 Gtk.main_quit()
         else:
+            fn.os.unlink("/tmp/arcologout.lock")
             Gtk.main_quit()
 
     def __exec_cmd(self, cmdline):
         fn.os.system(cmdline)
 
+    def on_close(self, widget, data):
+        fn.os.unlink("/tmp/arcologout.lock")
+        Gtk.main_quit()
 
-window_list = Wnck.Screen.get_default().get_windows()
-state = False
-for win in window_list:
-    if "Arcolinux Logout" in win.get_name():
-        state = True
-if not state:
-    TransparentWindow()
-    Gtk.main()
-else:
-    print("something")
+
+if __name__ == "__main__":
+    if not fn.os.path.isfile("/tmp/arcologout.lock"):
+        with open("/tmp/arcologout.pid", "w") as f:
+            f.write(str(fn.os.getpid()))
+            f.close()
+        w = TransparentWindow()
+        w.show_all()
+        Gtk.main()
+    else:
+        print("something")

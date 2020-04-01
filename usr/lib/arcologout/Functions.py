@@ -22,6 +22,7 @@ def cache_bl(self, GLib, Gtk):
                         working_dir + "wallpaper.jpg"],
                        shell=False)
         GLib.idle_add(self.lbl_stat.set_text, "")
+        os.unlink("/tmp/arcologout.lock")
         os.system(self.cmd_lock)
         Gtk.main_quit()
     else:
