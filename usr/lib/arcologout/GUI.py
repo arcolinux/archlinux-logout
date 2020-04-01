@@ -28,6 +28,8 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     vbox3 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox4 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox5 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    vbox6 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    vbox7 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
 
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=30)
 
@@ -67,9 +69,27 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     El.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
     El.connect("leave-notify-event", self.on_mouse_out, "L")  # 2
 
+    Ec = Gtk.EventBox()
+    Ec.connect("button_press_event", self.on_click, "Escape")
+    Ec.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    Ec.connect("enter-notify-event", self.on_mouse_in, "Escape")  # 2
+    Ec.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    Ec.connect("leave-notify-event", self.on_mouse_out, "Escape")  # 2
+
+    Eh = Gtk.EventBox()
+    Eh.connect("button_press_event", self.on_click, "H")
+    Eh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    Eh.connect("enter-notify-event", self.on_mouse_in, "H")  # 2
+    Eh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    Eh.connect("leave-notify-event", self.on_mouse_out, "H")  # 2
+
     psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
         os.path.join(working_dir, 'shutdown.svg'), 64, 64)
     self.imagesh = Gtk.Image().new_from_pixbuf(psh)
+
+    pc = GdkPixbuf.Pixbuf().new_from_file_at_size(
+        os.path.join(working_dir, 'cancel.svg'), 64, 64)
+    self.imagec = Gtk.Image().new_from_pixbuf(pc)
 
     pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
         os.path.join(working_dir, 'restart.svg'), 64, 64)
@@ -87,17 +107,25 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
         os.path.join(working_dir, 'logout.svg'), 64, 64)
     self.imagelo = Gtk.Image().new_from_pixbuf(plo)
 
+    ph = GdkPixbuf.Pixbuf().new_from_file_at_size(
+        os.path.join(working_dir, 'hibernate.svg'), 64, 64)
+    self.imageh = Gtk.Image().new_from_pixbuf(ph)
+
     Esh.add(self.imagesh)
     Er.add(self.imager)
     Es.add(self.images)
     Elk.add(self.imagelk)
     El.add(self.imagelo)
+    Ec.add(self.imagec)
+    Eh.add(self.imageh)
 
     lbl1 = Gtk.Label(label="Shutdown")
     lbl2 = Gtk.Label(label="Reboot")
     lbl3 = Gtk.Label(label="Suspend")
     lbl4 = Gtk.Label(label="Lock")
     lbl5 = Gtk.Label(label="Logout")
+    lbl6 = Gtk.Label(label="Cancel")
+    lbl7 = Gtk.Label(label="Hibernate")
 
     vbox1.pack_start(Esh, False, False, 0)
     vbox1.pack_start(lbl1, False, False, 0)
@@ -109,10 +137,16 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     vbox4.pack_start(lbl4, False, False, 0)
     vbox5.pack_start(El, False, False, 0)
     vbox5.pack_start(lbl5, False, False, 0)
+    vbox6.pack_start(Ec, False, False, 0)
+    vbox6.pack_start(lbl6, False, False, 0)
+    vbox7.pack_start(Eh, False, False, 0)
+    vbox7.pack_start(lbl7, False, False, 0)
 
+    hbox1.pack_start(vbox6, False, False, 30)
     hbox1.pack_start(vbox1, False, False, 30)
     hbox1.pack_start(vbox2, False, False, 30)
     hbox1.pack_start(vbox3, False, False, 30)
+    hbox1.pack_start(vbox7, False, False, 30)
     hbox1.pack_start(vbox4, False, False, 30)
     hbox1.pack_start(vbox5, False, False, 30)
 

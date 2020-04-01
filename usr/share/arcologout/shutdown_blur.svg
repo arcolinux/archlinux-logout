@@ -57,7 +57,7 @@
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter818"
+       id="filter844"
        x="-0.12"
        width="1.24"
        y="-0.12"
@@ -65,27 +65,29 @@
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="0.8"
-         id="feGaussianBlur820" />
+         id="feGaussianBlur846" />
     </filter>
   </defs>
   <g
-     style="fill:#fffffb;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;filter:url(#filter818)"
-     id="g816"
-     transform="translate(1,1)">
+     style="fill:#fffffb;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;filter:url(#filter844)"
+     id="g842"
+     transform="matrix(0.88559322,0,0,0.88559322,2.2584746,2.2584746)">
     <path
-       id="path814"
+       inkscape:connector-curvature="0"
+       id="path840"
        class="ColorScheme-Text"
-       d="M 10 3 L 10 10 L 12 10 L 12 3 L 10 3 z M 9 3.265625 C 5.5444518 4.1502188 3 7.2610109 3 11 C 3 15.432 6.568 19 11 19 C 15.432 19 19 15.432 19 11 C 19 7.2610109 16.455548 4.1502188 13 3.265625 L 13 4.3027344 C 15.895041 5.15992 18 7.819625 18 11 C 18 14.878 14.878 18 11 18 C 7.122 18 4 14.878 4 11 C 4 7.819625 6.1049587 5.15992 9 4.3027344 L 9 3.265625 z "
-       style="fill:#fffffb;fill-opacity:1;stroke:#ffffff;stroke-opacity:1" />
+       d="m 10,3 v 7 h 2 V 3 Z M 9,3.265625 C 5.5444518,4.1502188 3,7.2610109 3,11 c 0,4.432 3.568,8 8,8 4.432,0 8,-3.568 8,-8 C 19,7.2610109 16.455548,4.1502188 13,3.265625 V 4.3027344 C 15.895041,5.15992 18,7.819625 18,11 18,14.878 14.878,18 11,18 7.122,18 4,14.878 4,11 4,7.819625 6.1049587,5.15992 9,4.3027344 Z"
+       style="color:#232629;fill:#fffffb;fill-opacity:1;stroke:#ffffff;stroke-opacity:1" />
   </g>
   <g
-     transform="translate(1,1)"
+     transform="matrix(0.88559322,0,0,0.88559322,2.2584746,2.2584746)"
      id="g6"
      style="fill:#fffffb;fill-opacity:1">
     <path
-       style="fill:#fffffb;fill-opacity:1;stroke:none"
-       d="M 10 3 L 10 10 L 12 10 L 12 3 L 10 3 z M 9 3.265625 C 5.5444518 4.1502188 3 7.2610109 3 11 C 3 15.432 6.568 19 11 19 C 15.432 19 19 15.432 19 11 C 19 7.2610109 16.455548 4.1502188 13 3.265625 L 13 4.3027344 C 15.895041 5.15992 18 7.819625 18 11 C 18 14.878 14.878 18 11 18 C 7.122 18 4 14.878 4 11 C 4 7.819625 6.1049587 5.15992 9 4.3027344 L 9 3.265625 z "
+       style="color:#232629;fill:#fffffb;fill-opacity:1;stroke:none"
+       d="m 10,3 v 7 h 2 V 3 Z M 9,3.265625 C 5.5444518,4.1502188 3,7.2610109 3,11 c 0,4.432 3.568,8 8,8 4.432,0 8,-3.568 8,-8 C 19,7.2610109 16.455548,4.1502188 13,3.265625 V 4.3027344 C 15.895041,5.15992 18,7.819625 18,11 18,14.878 14.878,18 11,18 7.122,18 4,14.878 4,11 4,7.819625 6.1049587,5.15992 9,4.3027344 Z"
        class="ColorScheme-Text"
-       id="path4" />
+       id="path4"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

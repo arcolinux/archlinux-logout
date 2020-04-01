@@ -19,6 +19,7 @@ class TransparentWindow(Gtk.Window):
     cmd_shutdown = "systemctl poweroff"
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
+    cmd_hibernate = "systemctl hibernate"
     cmd_lock = "betterlockscreen -l dimblur"
     wallpaper = ""
 
@@ -68,6 +69,14 @@ class TransparentWindow(Gtk.Window):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'logout_blur.svg'), 64, 64)
             self.imagelo.set_from_pixbuf(plo)
+        elif data == "Escape":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'cancel_blur.svg'), 64, 64)
+            self.imagec.set_from_pixbuf(plo)
+        elif data == "H":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'hibernate_blur.svg'), 64, 64)
+            self.imageh.set_from_pixbuf(plo)
 
     def on_mouse_out(self, widget, event, data):
         if data == "S":
@@ -90,6 +99,15 @@ class TransparentWindow(Gtk.Window):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'logout.svg'), 64, 64)
             self.imagelo.set_from_pixbuf(plo)
+        elif data == "Escape":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'cancel.svg'), 64, 64)
+            self.imagec.set_from_pixbuf(plo)
+        elif data == "H":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'hibernate.svg'), 64, 64)
+            self.imageh.set_from_pixbuf(plo)
+        
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
