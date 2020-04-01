@@ -69,6 +69,8 @@ def _get_logout():
         return "pkill dwm"
     elif desktop in ("i3", "/usr/share/xsessions/i3"):
         return "pkill i3"
+    elif desktop in ("spectrwm", "/usr/share/xsessions/spectrwm"):
+        return "pkill spectrwm"
     # elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
     #     return "xfce4-session-logout --logout"
 
