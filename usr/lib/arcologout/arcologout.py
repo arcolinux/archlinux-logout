@@ -98,7 +98,7 @@ class TransparentWindow(Gtk.Window):
         self.__is_fullscreen = bool(ev.new_window_state & Gdk.WindowState.FULLSCREEN)
 
     def draw(self, widget, context):
-        context.set_source_rgba(self.r, self.g, self.b, self.opacity)
+        context.set_source_rgba(0, 0, 0, self.opacity)
         context.set_operator(cairo.OPERATOR_SOURCE)
         context.paint()
         context.set_operator(cairo.OPERATOR_OVER)
