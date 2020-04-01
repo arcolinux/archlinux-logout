@@ -20,6 +20,7 @@ class TransparentWindow(Gtk.Window):
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_lock = "betterlockscreen -l dimblur"
+    wallpaper = ""
 
     def __init__(self):
         super(TransparentWindow, self).__init__(title="Arcolinux Logout")
@@ -38,7 +39,7 @@ class TransparentWindow(Gtk.Window):
             self.set_visual(visual)
 
         fn.get_config(self, Gdk, fn.config)
-
+        print(self.wallpaper)
         self.fullscreen()
         self.set_app_paintable(True)
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk)

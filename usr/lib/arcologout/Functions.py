@@ -19,7 +19,7 @@ config = "/etc/arcologout.conf"
 def cache_bl(self, GLib, Gtk):
     if os.path.isfile("/usr/bin/betterlockscreen"):
         subprocess.run(["betterlockscreen", "-u",
-                        working_dir + "wallpaper.jpg"],
+                        self.wallpaper],
                        shell=False)
         GLib.idle_add(self.lbl_stat.set_text, "")
         os.unlink("/tmp/arcologout.lock")
@@ -40,11 +40,12 @@ def get_config(self, Gdk, config):
     if self.parser.has_section("settings"):
         if self.parser.has_option("settings", "opacity"):
             self.opacity = int(self.parser.get("settings", "opacity"))/100
+        if self.parser.has_option("settings", "lock_wallpaper"):
+            self.wallpaper = self.parser.get("settings", "lock_wallpaper")
 
     if self.parser.has_section("commands"):
         if self.parser.has_option("commands", "lock"):
             self.cmd_lock = self.parser.get("commands", "lock")
-
 
 def _get_logout():
     out = subprocess.run(["sh", "-c", "env | grep DESKTOP_SESSION"],
