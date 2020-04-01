@@ -19,7 +19,7 @@ config = "/etc/arcologout.conf"
 def cache_bl():
     if os.path.isfile("/usr/bin/betterlockscreen"):
         subprocess.run(["betterlockscreen", "-u",
-                        working_dir + "wallpaper.png"],
+                        working_dir + "wallpaper.jpg"],
                        shell=False)
     else:
         print("not installed betterlockscreen.")
