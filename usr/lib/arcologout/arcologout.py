@@ -44,7 +44,7 @@ class TransparentWindow(Gtk.Window):
         height = geometry.height
 
         self.resize(width, height)
-        
+
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
             self.set_visual(visual)
@@ -117,7 +117,6 @@ class TransparentWindow(Gtk.Window):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'hibernate.svg'), 64, 64)
             self.imageh.set_from_pixbuf(plo)
-        
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
@@ -167,7 +166,7 @@ class TransparentWindow(Gtk.Window):
 
         elif (data == 'K'):
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
-                self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")
+                self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                 t = threading.Thread(target=fn.cache_bl, args=(self, GLib, Gtk,))
                 t.daemon = True
                 t.start()
