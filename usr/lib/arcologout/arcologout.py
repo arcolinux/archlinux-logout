@@ -12,7 +12,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('Wnck', '3.0')
 
-from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck, GLib  # noqa
+from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck, GLib, GdkX11  # noqa
 
 
 class TransparentWindow(Gtk.Window):
@@ -36,12 +36,12 @@ class TransparentWindow(Gtk.Window):
 
         screen = self.get_screen()
 
-        screen_size = screen.get_default()
-        if screen_size.get_n_monitors() < self.monitor:
-            self.monitor = screen.get_n_monitors()
-        geometry = screen.get_monitor_geometry(self.monitor)
-        width = geometry.width
-        height = geometry.height
+        screens = Gdk.Display.get_default()
+        monitor = screens.get_monitor(0)
+        rect = monitor.get_geometry()
+
+        width = rect.width
+        height = rect.height
 
         self.resize(width, height)
 
@@ -50,10 +50,11 @@ class TransparentWindow(Gtk.Window):
             self.set_visual(visual)
 
         fn.get_config(self, Gdk, fn.config)
-        print(self.wallpaper)
+
         self.fullscreen()
         self.set_app_paintable(True)
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk)
+
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
