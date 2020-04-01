@@ -7,7 +7,21 @@
 def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     mainbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    self.add(mainbox)
+
+    lblbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    
+    lbl = Gtk.Label(label="")
+
+    self.lbl_stat = Gtk.Label()
+    
+    lblbox.pack_start(lbl, True, False, 0)
+    lblbox.pack_start(self.lbl_stat, True, False, 0)
+
+    overlayFrame = Gtk.Overlay()
+    overlayFrame.add(lblbox)
+    overlayFrame.add_overlay(mainbox)
+
+    self.add(overlayFrame)
 
     vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -105,3 +119,4 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     mainbox2.pack_start(hbox1, True, False, 0)
 
     mainbox.pack_start(mainbox2, True, False, 0)
+    # mainbox.pack_start(overlayFrame, False, False, 50)

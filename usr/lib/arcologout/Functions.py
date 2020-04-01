@@ -16,11 +16,14 @@ config = "/etc/arcologout.conf"
 # config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 
 
-def cache_bl():
+def cache_bl(self, GLib, Gtk):
     if os.path.isfile("/usr/bin/betterlockscreen"):
         subprocess.run(["betterlockscreen", "-u",
                         working_dir + "wallpaper.jpg"],
                        shell=False)
+        GLib.idle_add(self.lbl_stat.set_text, "")
+        os.system(self.cmd_lock)
+        Gtk.main_quit()
     else:
         print("not installed betterlockscreen.")
 

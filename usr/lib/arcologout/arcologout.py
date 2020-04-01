@@ -6,12 +6,13 @@ import cairo
 import gi
 import GUI
 import Functions as fn
+import threading
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('Wnck', '3.0')
 
-from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck  # noqa
+from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck, GLib  # noqa
 
 
 class TransparentWindow(Gtk.Window):
@@ -110,25 +111,35 @@ class TransparentWindow(Gtk.Window):
         if (data == 'L'):
             command = fn._get_logout()
             self.__exec_cmd(command)
+            Gtk.main_quit()
 
         elif (data == 'R'):
             self.__exec_cmd(self.cmd_restart)
+            Gtk.main_quit()
 
         elif (data == 'S'):
             self.__exec_cmd(self.cmd_shutdown)
+            Gtk.main_quit()
 
         elif (data == 'U'):
             self.__exec_cmd(self.cmd_suspend)
+            Gtk.main_quit()
 
         elif (data == 'H'):
             self.__exec_cmd(self.cmd_hibernate)
+            Gtk.main_quit()
 
         elif (data == 'K'):
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
-                fn.cache_bl()
-            self.__exec_cmd(self.cmd_lock)
-
-        Gtk.main_quit()
+                self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")
+                t = threading.Thread(target=fn.cache_bl, args=(self, GLib, Gtk,))
+                t.daemon = True
+                t.start()
+            else:
+                self.__exec_cmd(self.cmd_lock)
+                Gtk.main_quit()
+        else:
+            Gtk.main_quit()
 
     def __exec_cmd(self, cmdline):
         fn.os.system(cmdline)
