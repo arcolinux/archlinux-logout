@@ -88,6 +88,7 @@ class TransparentWindow(Gtk.Window):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'hibernate_blur.svg'), 64, 64)
             self.imageh.set_from_pixbuf(plo)
+        event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
     def on_mouse_out(self, widget, event, data):
         if data == "S":
