@@ -143,4 +143,4 @@ if not state:
     TransparentWindow()
     Gtk.main()
 else:
-    print("something,")
+    print("something")
