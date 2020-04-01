@@ -167,7 +167,8 @@ class TransparentWindow(Gtk.Window):
         elif (data == 'K'):
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
                 self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
-                t = threading.Thread(target=fn.cache_bl, args=(self, GLib, Gtk,))
+                t = threading.Thread(target=fn.cache_bl,
+                                     args=(self, GLib, Gtk,))
                 t.daemon = True
                 t.start()
             else:
