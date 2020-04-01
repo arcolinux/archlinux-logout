@@ -23,6 +23,9 @@ class TransparentWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self)
 
+        # if exists folder ~/.cache/i3lock do not run
+        self.__exec_cmd("betterlockscreen -u /usr/share/backgrounds/arcolinux/arco-login.jpg")
+
         self.set_size_request(300, 220)
 
         self.connect('destroy', Gtk.main_quit)
@@ -36,7 +39,7 @@ class TransparentWindow(Gtk.Window):
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
             self.set_visual(visual)
-        
+
         fn.get_config(self, Gdk, fn.config)
 
         self.fullscreen()
@@ -110,7 +113,7 @@ class TransparentWindow(Gtk.Window):
     def click_button(self, widget, data=None):
         if (data == 'L'):
             command = fn._get_logout()
-            self.__exec_cmd(command)            
+            self.__exec_cmd(command)
 
         elif (data == 'R'):
             self.__exec_cmd(self.cmd_restart)
