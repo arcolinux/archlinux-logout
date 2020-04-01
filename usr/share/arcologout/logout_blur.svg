@@ -53,22 +53,22 @@
   <desc
      id="desc4">Created with Sketch.</desc>
   <g
+     style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1;filter:url(#filter876)"
      fill-rule="evenodd"
      fill="none"
      stroke-width="1"
      stroke="none"
-     id="g829"
-     style="stroke:#ffffff;stroke-opacity:1;filter:url(#filter1003)">
+     id="g829">
     <g
+       style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
        fill-rule="nonzero"
        fill="#DDDDDD"
        transform="translate(6.000000, 5.000000)"
-       id="g827"
-       style="stroke:#ffffff;stroke-opacity:1">
+       id="g827">
       <path
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
          id="path825"
-         d="M1,0 L1,1.0019531 L10,1.0039062 L10,13.003906 L1,13.003906 L1,14 L11,14.003906 L11,0.0039062 L1,0 Z M4,4.0039062 L4,6.0039062 L0,6.0039062 L0,7.0039062 L4,7.0039062 L4,9.003906 L8,6.5039061 L4,4.0039062 Z"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         d="M1,0 L1,1.0019531 L10,1.0039062 L10,13.003906 L1,13.003906 L1,14 L11,14.003906 L11,0.0039062 L1,0 Z M4,4.0039062 L4,6.0039062 L0,6.0039062 L0,7.0039062 L4,7.0039062 L4,9.003906 L8,6.5039061 L4,4.0039062 Z" />
     </g>
   </g>
   <defs
@@ -76,15 +76,15 @@
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter1003"
-       x="-0.13638494"
-       width="1.2727699"
-       y="-0.10712971"
-       height="1.2142594">
+       id="filter876"
+       x="-0.27276988"
+       width="1.5455398"
+       y="-0.21425942"
+       height="1.4285188">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.62509765"
-         id="feGaussianBlur1005" />
+         stdDeviation="1.2501953"
+         id="feGaussianBlur878" />
     </filter>
   </defs>
   <g
@@ -92,15 +92,18 @@
      stroke="none"
      stroke-width="1"
      fill="none"
-     fill-rule="evenodd">
+     fill-rule="evenodd"
+     style="fill:#ffffff">
     <g
        id="259"
        transform="translate(6.000000, 5.000000)"
        fill="#DDDDDD"
-       fill-rule="nonzero">
+       fill-rule="nonzero"
+       style="fill:#ffffff">
       <path
          d="M1,0 L1,1.0019531 L10,1.0039062 L10,13.003906 L1,13.003906 L1,14 L11,14.003906 L11,0.0039062 L1,0 Z M4,4.0039062 L4,6.0039062 L0,6.0039062 L0,7.0039062 L4,7.0039062 L4,9.003906 L8,6.5039061 L4,4.0039062 Z"
-         id="Shape" />
+         id="Shape"
+         style="fill:#ffffff" />
     </g>
   </g>
 </svg>

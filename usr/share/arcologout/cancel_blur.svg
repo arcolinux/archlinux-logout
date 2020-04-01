@@ -85,13 +85,13 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter825"
-       x="-0.12"
-       width="1.24"
-       y="-0.12"
-       height="1.24">
+       x="-0.24"
+       width="1.48"
+       y="-0.24"
+       height="1.48">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.7"
+         stdDeviation="1.4"
          id="feGaussianBlur827" />
     </filter>
   </defs>

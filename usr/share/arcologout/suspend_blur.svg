@@ -39,6 +39,7 @@
      inkscape:window-height="1080"
      id="namedview15"
      showgrid="false"
+     inkscape:pagecheckerboard="true"
      inkscape:zoom="9.8333333"
      inkscape:cx="-7.8305085"
      inkscape:cy="12"
@@ -52,35 +53,35 @@
   <desc
      id="desc4">Created with Sketch.</desc>
   <g
+     style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;filter:url(#filter838)"
      fill-rule="evenodd"
      fill="none"
      stroke-width="1"
      stroke="none"
-     id="g832"
-     style="stroke:#ffffff;stroke-opacity:1;filter:url(#filter878)">
+     id="g832">
     <g
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
        fill-rule="nonzero"
        fill="#DDDDDD"
        transform="translate(5.000000, 3.000000)"
-       id="g830"
-       style="stroke:#ffffff;stroke-opacity:1">
+       id="g830">
       <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
          id="path824"
-         d="M6.5,1.996094 C5.94771475,1.996094 5.5,2.44380875 5.5,2.996094 C5.5,3.54837925 5.94771475,3.996094 6.5,3.996094 C7.05228525,3.996094 7.5,3.54837925 7.5,2.996094 C7.5,2.44379143 7.05229793,1.996094 6.5,1.996094 Z M6.5,0.996094 C7.60457,0.996094 8.5,1.891494 8.5,2.996094 C8.5,4.100664 7.60457,4.996094 6.5,4.996094 C5.39543,4.996094 4.5,4.100664 4.5,2.996094 C4.5,1.891524 5.39543,0.996094 6.5,0.996094 Z"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         d="M6.5,1.996094 C5.94771475,1.996094 5.5,2.44380875 5.5,2.996094 C5.5,3.54837925 5.94771475,3.996094 6.5,3.996094 C7.05228525,3.996094 7.5,3.54837925 7.5,2.996094 C7.5,2.44379143 7.05229793,1.996094 6.5,1.996094 Z M6.5,0.996094 C7.60457,0.996094 8.5,1.891494 8.5,2.996094 C8.5,4.100664 7.60457,4.996094 6.5,4.996094 C5.39543,4.996094 4.5,4.100664 4.5,2.996094 C4.5,1.891524 5.39543,0.996094 6.5,0.996094 Z" />
       <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
          height="1"
          width="9"
          y="10"
          x="2"
          transform="translate(6.500000, 10.500000) rotate(-90.000000) translate(-6.500000, -10.500000) "
-         id="rect826"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         id="rect826" />
       <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
          transform="translate(6.521879, 10.742344) rotate(-45.000000) translate(-6.521879, -10.742344) "
          id="path828"
-         d="M3.87543271,13.3887907 L10.8754327,13.3887907 L10.8754327,14.3887907 L3.87543271,14.3887907 L2.87543271,14.3887907 L2.87543271,6.38879071 L3.87543271,6.38879071 L3.87543271,13.3887907 Z"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         d="M3.87543271,13.3887907 L10.8754327,13.3887907 L10.8754327,14.3887907 L3.87543271,14.3887907 L2.87543271,14.3887907 L2.87543271,6.38879071 L3.87543271,6.38879071 L3.87543271,13.3887907 Z" />
     </g>
   </g>
   <defs
@@ -88,15 +89,15 @@
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter878"
-       x="-0.13903564"
-       width="1.2780713"
-       y="-0.10554907"
-       height="1.2110981">
+       id="filter838"
+       x="-0.27807129"
+       width="1.5561426"
+       y="-0.21109814"
+       height="1.4221963">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.65542031"
-         id="feGaussianBlur880" />
+         stdDeviation="1.3108406"
+         id="feGaussianBlur840" />
     </filter>
   </defs>
   <g
@@ -104,26 +105,31 @@
      stroke="none"
      stroke-width="1"
      fill="none"
-     fill-rule="evenodd">
+     fill-rule="evenodd"
+     style="fill:#ffffff;fill-opacity:1">
     <g
        id="218"
        transform="translate(5.000000, 3.000000)"
        fill="#DDDDDD"
-       fill-rule="nonzero">
+       fill-rule="nonzero"
+       style="fill:#ffffff;fill-opacity:1">
       <path
          d="M6.5,1.996094 C5.94771475,1.996094 5.5,2.44380875 5.5,2.996094 C5.5,3.54837925 5.94771475,3.996094 6.5,3.996094 C7.05228525,3.996094 7.5,3.54837925 7.5,2.996094 C7.5,2.44379143 7.05229793,1.996094 6.5,1.996094 Z M6.5,0.996094 C7.60457,0.996094 8.5,1.891494 8.5,2.996094 C8.5,4.100664 7.60457,4.996094 6.5,4.996094 C5.39543,4.996094 4.5,4.100664 4.5,2.996094 C4.5,1.891524 5.39543,0.996094 6.5,0.996094 Z"
-         id="Path" />
+         id="Path"
+         style="fill:#ffffff;fill-opacity:1" />
       <rect
          id="Rectangle"
          transform="translate(6.500000, 10.500000) rotate(-90.000000) translate(-6.500000, -10.500000) "
          x="2"
          y="10"
          width="9"
-         height="1" />
+         height="1"
+         style="fill:#ffffff;fill-opacity:1" />
       <path
          d="M3.87543271,13.3887907 L10.8754327,13.3887907 L10.8754327,14.3887907 L3.87543271,14.3887907 L2.87543271,14.3887907 L2.87543271,6.38879071 L3.87543271,6.38879071 L3.87543271,13.3887907 Z"
          id="Combined-Shape"
-         transform="translate(6.521879, 10.742344) rotate(-45.000000) translate(-6.521879, -10.742344) " />
+         transform="translate(6.521879, 10.742344) rotate(-45.000000) translate(-6.521879, -10.742344) "
+         style="fill:#ffffff;fill-opacity:1" />
     </g>
   </g>
 </svg>

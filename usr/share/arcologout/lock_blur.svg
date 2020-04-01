@@ -40,9 +40,9 @@
      id="namedview14"
      showgrid="false"
      inkscape:pagecheckerboard="true"
-     inkscape:zoom="27.812867"
-     inkscape:cx="5.4677398"
-     inkscape:cy="10.602744"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="-7.8305085"
+     inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -53,24 +53,29 @@
   <desc
      id="desc4">Created with Sketch.</desc>
   <g
-     style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:1;stroke-opacity:1;filter:url(#filter4591)"
-     id="document-edit-copy-3">
+     style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1;filter:url(#filter831)"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-width="1"
+     stroke="none"
+     id="g829">
     <g
-       style="fill:#dddddd;fill-rule:nonzero;stroke:#ffffff;stroke-opacity:1"
-       id="27-6"
-       transform="translate(6,5)">
+       style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+       fill-rule="nonzero"
+       fill="#DDDDDD"
+       transform="translate(6.000000, 5.000000)"
+       id="g827">
       <path
-         inkscape:connector-curvature="0"
-         d="M 6,1 C 4.3434673,1 3,2.3667179 3,4.0625 V 7 H 1 v 6 H 11 V 7 H 9 V 4.0625 C 9,2.3672731 7.6561924,1 6,1 Z M 6,0 c 2.216,0 4,1.8225 4,4.0625 V 6 h 1 c 0.554,0 1,0.446 1,1 v 6 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,14 0,13.554 0,13 V 7 C 0,6.446 0.446,6 1,6 H 2 V 4.0625 C 2,1.8216 3.784,0 6,0 Z"
-         id="Combined-Shape-7"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+         id="path823"
+         d="M6,1 C4.34346732,1 3,2.36671785 3,4.0625 L3,7 L1,7 L1,13 L11,13 L11,7 L9,7 L9,4.0625 C9,2.36727307 7.65619244,1 6,1 Z M6,0 C8.216,0 10,1.8225 10,4.0625 L10,6 L11,6 C11.554,6 12,6.446 12,7 L12,13 C12,13.554 11.554,14 11,14 L1,14 C0.446,14 0,13.554 0,13 L0,7 C0,6.446 0.446,6 1,6 L2,6 L2,4.0625 C2,1.8216 3.784,0 6,0 Z" />
       <rect
-         id="Rectangle-5"
-         x="2"
-         y="6"
-         width="8"
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
          height="1"
-         style="stroke:#ffffff;stroke-opacity:1" />
+         width="8"
+         y="6"
+         x="2"
+         id="rect825" />
     </g>
   </g>
   <defs
@@ -78,15 +83,15 @@
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter4591"
-       x="-0.13"
-       width="1.26"
-       y="-0.11142857"
-       height="1.2228571">
+       id="filter831"
+       x="-0.26"
+       width="1.52"
+       y="-0.22285714"
+       height="1.4457143">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="0.65"
-         id="feGaussianBlur4593" />
+         stdDeviation="1.3"
+         id="feGaussianBlur833" />
     </filter>
   </defs>
   <g
@@ -94,21 +99,25 @@
      stroke="none"
      stroke-width="1"
      fill="none"
-     fill-rule="evenodd">
+     fill-rule="evenodd"
+     style="fill:#ffffff">
     <g
        id="27"
        transform="translate(6.000000, 5.000000)"
        fill="#DDDDDD"
-       fill-rule="nonzero">
+       fill-rule="nonzero"
+       style="fill:#ffffff">
       <path
          d="M6,1 C4.34346732,1 3,2.36671785 3,4.0625 L3,7 L1,7 L1,13 L11,13 L11,7 L9,7 L9,4.0625 C9,2.36727307 7.65619244,1 6,1 Z M6,0 C8.216,0 10,1.8225 10,4.0625 L10,6 L11,6 C11.554,6 12,6.446 12,7 L12,13 C12,13.554 11.554,14 11,14 L1,14 C0.446,14 0,13.554 0,13 L0,7 C0,6.446 0.446,6 1,6 L2,6 L2,4.0625 C2,1.8216 3.784,0 6,0 Z"
-         id="Combined-Shape" />
+         id="Combined-Shape"
+         style="fill:#ffffff" />
       <rect
          id="Rectangle"
          x="2"
          y="6"
          width="8"
-         height="1" />
+         height="1"
+         style="fill:#ffffff" />
     </g>
   </g>
 </svg>
