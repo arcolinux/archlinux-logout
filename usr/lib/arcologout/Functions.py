@@ -72,3 +72,7 @@ def _get_logout():
         return "xfce4-session-logout --logout"
 
     return None
+
+def file_check(file):
+    if os.path.isfile(file):
+        return True

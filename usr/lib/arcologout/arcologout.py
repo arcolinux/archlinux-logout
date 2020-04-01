@@ -24,7 +24,7 @@ class TransparentWindow(Gtk.Window):
         Gtk.Window.__init__(self)
 
         # if exists folder ~/.cache/i3lock do not run
-        self.__exec_cmd("betterlockscreen -u /usr/share/backgrounds/arcolinux/arco-login.jpg")
+        #self.__exec_cmd("betterlockscreen -u /usr/share/backgrounds/arcolinux/arco-login.jpg")
 
         self.set_size_request(300, 220)
 
