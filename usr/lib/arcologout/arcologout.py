@@ -27,7 +27,7 @@ class TransparentWindow(Gtk.Window):
         super(TransparentWindow, self).__init__(title="Arcolinux Logout")
         self.set_size_request(300, 220)
 
-        self.connect('destroy', self.on_close)
+        self.connect('delete-event', self.on_close)
         self.connect('draw', self.draw)
         self.connect("key-press-event", self.on_keypress)
         self.connect("window-state-event", self.on_window_state_event)
