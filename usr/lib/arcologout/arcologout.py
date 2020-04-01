@@ -10,8 +10,7 @@ import Functions as fn
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 
-from gi.repository import Gtk, GdkPixbuf
-from gi.repository import Gdk, Gdk
+from gi.repository import Gtk, GdkPixbuf, Gdk  # noqa
 
 
 class TransparentWindow(Gtk.Window):
@@ -22,10 +21,6 @@ class TransparentWindow(Gtk.Window):
 
     def __init__(self):
         Gtk.Window.__init__(self)
-
-        # if exists folder ~/.cache/i3lock do not run
-        #self.__exec_cmd("betterlockscreen -u /usr/share/backgrounds/arcolinux/arco-login.jpg")
-
         self.set_size_request(300, 220)
 
         self.connect('destroy', Gtk.main_quit)
@@ -95,7 +90,7 @@ class TransparentWindow(Gtk.Window):
         self.click_button(widget, data)
 
     def on_window_state_event(self, widget, ev):
-        self.__is_fullscreen = bool(ev.new_window_state & Gdk.WindowState.FULLSCREEN)
+        self.__is_fullscreen = bool(ev.new_window_state & Gdk.WindowState.FULLSCREEN)  # noqa
 
     def draw(self, widget, context):
         context.set_source_rgba(0, 0, 0, self.opacity)
@@ -128,6 +123,8 @@ class TransparentWindow(Gtk.Window):
             self.__exec_cmd(self.cmd_hibernate)
 
         elif (data == 'K'):
+            if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
+                fn.cache_bl()
             self.__exec_cmd(self.cmd_lock)
 
         Gtk.main_quit()

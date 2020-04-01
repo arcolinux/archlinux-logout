@@ -15,16 +15,13 @@ config = "/etc/arcologout.conf"
 # config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 
 
-def hex_rgb(self, h):
-
-    if len(h) == 3:
-        h = h + h
-
-    f = [int(h[i:i+2], 16) for i in (0, 2, 4)]
-
-    self.r = f[0]
-    self.g = f[1]
-    self.b = f[2]
+def cache_bl():
+    if os.path.isfile("/usr/bin/betterlockscreen"):
+        subprocess.run(["betterlockscreen", "-u",
+                        working_dir + "wallpaper.png"],
+                       shell=False)
+    else:
+        print("not installed betterlockscreen.")
 
 
 def get_config(self, Gdk, config):
@@ -40,9 +37,6 @@ def get_config(self, Gdk, config):
 
     # Check if we're using HAL, and init it as required.
     if self.parser.has_section("settings"):
-        if self.parser.has_option("settings", "backend"):
-            self.bgcolor = self.parser.get("settings", "backend")
-            hex_rgb(self, self.bgcolor.replace('#', ''))
         if self.parser.has_option("settings", "opacity"):
             self.opacity = int(self.parser.get("settings", "opacity"))/100
 
@@ -68,10 +62,13 @@ def _get_logout():
         return "pkill xmonad"
     elif desktop in ("dwm", "/usr/share/xsessions/dwm"):
         return "pkill dwm"
-    elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
-        return "xfce4-session-logout --logout"
+    elif desktop in ("i3", "/usr/share/xsessions/i3"):
+        return "pkill i3"
+    # elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
+    #     return "xfce4-session-logout --logout"
 
     return None
+
 
 def file_check(file):
     if os.path.isfile(file):
