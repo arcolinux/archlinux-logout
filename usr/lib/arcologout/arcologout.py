@@ -26,7 +26,7 @@ class TransparentWindow(Gtk.Window):
     def __init__(self):
         super(TransparentWindow, self).__init__(title="Arcolinux Logout")
         self.set_size_request(300, 220)
-
+        self.monitor = 0
         self.connect('delete-event', self.on_close)
         self.connect('draw', self.draw)
         self.connect("key-press-event", self.on_keypress)
@@ -35,6 +35,16 @@ class TransparentWindow(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         screen = self.get_screen()
+
+        screen_size = screen.get_default()
+        if screen_size.get_n_monitors() < self.monitor:
+            self.monitor = screen.get_n_monitors()
+        geometry = screen.get_monitor_geometry(self.monitor)
+        width = geometry.width
+        height = geometry.height
+
+        self.resize(width, height)
+        
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
             self.set_visual(visual)
