@@ -22,6 +22,7 @@ class TransparentWindow(Gtk.Window):
     cmd_hibernate = "systemctl hibernate"
     cmd_lock = "betterlockscreen -l dimblur"
     wallpaper = ""
+    theme = "standard"
 
     def __init__(self):
         super(TransparentWindow, self).__init__(title="Arcolinux Logout")
@@ -62,37 +63,37 @@ class TransparentWindow(Gtk.Window):
     def on_mouse_in(self, widget, event, data):
         if data == "S":
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'shutdown_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), 64, 64)
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
         elif data == "R":
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'restart_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart_blur.svg'), 64, 64)
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
         elif data == "U":
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'suspend_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), 64, 64)
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
         elif data == "K":
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'lock_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock_blur.svg'), 64, 64)
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
         elif data == "L":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'logout_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout_blur.svg'), 64, 64)
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
         elif data == "Escape":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'cancel_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), 64, 64)
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
         elif data == "H":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'hibernate_blur.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), 64, 64)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
@@ -100,37 +101,37 @@ class TransparentWindow(Gtk.Window):
     def on_mouse_out(self, widget, event, data):
         if data == "S":
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'shutdown.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup("Shutdown")
         elif data == "R":
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'restart.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup("Reboot")
         elif data == "U":
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'suspend.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup("Suspend")
         elif data == "K":
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'lock.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup("Lock")
         elif data == "L":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'logout.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup("Logout")
         elif data == "Escape":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'cancel.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup("Cancel")
         elif data == "H":
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'hibernate.svg'), 64, 64)
+                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("Hibernate")
 

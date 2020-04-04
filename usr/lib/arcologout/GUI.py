@@ -84,31 +84,31 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     Eh.connect("leave-notify-event", self.on_mouse_out, "H")  # 2
 
     psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'shutdown.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
     self.imagesh = Gtk.Image().new_from_pixbuf(psh)
 
     pc = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'cancel.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
     self.imagec = Gtk.Image().new_from_pixbuf(pc)
 
     pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'restart.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
     self.imager = Gtk.Image().new_from_pixbuf(pr)
 
     ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'suspend.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
     self.images = Gtk.Image().new_from_pixbuf(ps)
 
     plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'lock.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
     self.imagelk = Gtk.Image().new_from_pixbuf(plk)
 
     plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'logout.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
     self.imagelo = Gtk.Image().new_from_pixbuf(plo)
 
     ph = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'hibernate.svg'), 64, 64)
+        os.path.join(working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
     self.imageh = Gtk.Image().new_from_pixbuf(ph)
 
     Esh.add(self.imagesh)

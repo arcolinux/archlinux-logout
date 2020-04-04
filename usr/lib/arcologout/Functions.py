@@ -47,6 +47,11 @@ def get_config(self, Gdk, config):
         if self.parser.has_option("commands", "lock"):
             self.cmd_lock = self.parser.get("commands", "lock")
 
+    if self.parser.has_section("themes"):
+        if self.parser.has_option("themes", "theme"):
+            self.theme = self.parser.get("themes", "theme")
+
+
 def _get_logout():
     out = subprocess.run(["sh", "-c", "env | grep DESKTOP_SESSION"],
                          shell=False, stdout=subprocess.PIPE)
