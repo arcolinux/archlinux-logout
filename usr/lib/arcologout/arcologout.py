@@ -22,7 +22,9 @@ class TransparentWindow(Gtk.Window):
     cmd_hibernate = "systemctl hibernate"
     cmd_lock = "betterlockscreen -l dimblur"
     wallpaper = ""
+    d_buttons = ['cancel','shutdown','restart','suspend','hibernate','lock','logout']
     theme = "standard"
+    buttons = None
     active = False
 
     def __init__(self):
@@ -52,6 +54,9 @@ class TransparentWindow(Gtk.Window):
             self.set_visual(visual)
 
         fn.get_config(self, Gdk, fn.config)
+
+        if self.buttons is None or self.buttons == ['']:
+            self.buttons = self.d_buttons
 
         self.fullscreen()
         self.set_app_paintable(True)

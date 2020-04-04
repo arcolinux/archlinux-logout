@@ -90,41 +90,44 @@ def _get_logout():
 
 
 def button_active(self, data, GdkPixbuf):
-    if data == "S":
-        psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), 64, 64)
-        self.imagesh.set_from_pixbuf(psh)
-        self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
-    elif data == "R":
-        pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/restart_blur.svg'), 64, 64)
-        self.imager.set_from_pixbuf(pr)
-        self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
-    elif data == "U":
-        ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), 64, 64)
-        self.images.set_from_pixbuf(ps)
-        self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
-    elif data == "K":
-        plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/lock_blur.svg'), 64, 64)
-        self.imagelk.set_from_pixbuf(plk)
-        self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
-    elif data == "L":
-        plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/logout_blur.svg'), 64, 64)
-        self.imagelo.set_from_pixbuf(plo)
-        self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
-    elif data == "Escape":
-        plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), 64, 64)
-        self.imagec.set_from_pixbuf(plo)
-        self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
-    elif data == "H":
-        plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-            os.path.join(working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), 64, 64)
-        self.imageh.set_from_pixbuf(plo)
-        self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
+    try:
+        if data == "S":
+            psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), 64, 64)
+            self.imagesh.set_from_pixbuf(psh)
+            self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
+        elif data == "R":
+            pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/restart_blur.svg'), 64, 64)
+            self.imager.set_from_pixbuf(pr)
+            self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
+        elif data == "U":
+            ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), 64, 64)
+            self.images.set_from_pixbuf(ps)
+            self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
+        elif data == "K":
+            plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/lock_blur.svg'), 64, 64)
+            self.imagelk.set_from_pixbuf(plk)
+            self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
+        elif data == "L":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/logout_blur.svg'), 64, 64)
+            self.imagelo.set_from_pixbuf(plo)
+            self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
+        elif data == "Escape":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), 64, 64)
+            self.imagec.set_from_pixbuf(plo)
+            self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
+        elif data == "H":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), 64, 64)
+            self.imageh.set_from_pixbuf(plo)
+            self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
+    except:
+        pass
 
 def button_toggled(self, data):
     self.Esh.set_sensitive(False)
