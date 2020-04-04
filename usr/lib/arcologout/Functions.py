@@ -12,8 +12,8 @@ home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 # here = Path(__file__).resolve()
 working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout/"])
-# config = "/etc/arcologout.conf"
-config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
+config = "/etc/arcologout.conf"
+# config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 
 
 def cache_bl(self, GLib, Gtk):
