@@ -23,6 +23,7 @@ class TransparentWindow(Gtk.Window):
     cmd_lock = "betterlockscreen -l dimblur"
     wallpaper = ""
     theme = "standard"
+    active = False
 
     def __init__(self):
         super(TransparentWindow, self).__init__(title="Arcolinux Logout")
@@ -55,7 +56,6 @@ class TransparentWindow(Gtk.Window):
         self.fullscreen()
         self.set_app_paintable(True)
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk)
-
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
@@ -99,41 +99,42 @@ class TransparentWindow(Gtk.Window):
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
     def on_mouse_out(self, widget, event, data):
-        if data == "S":
-            psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
-            self.imagesh.set_from_pixbuf(psh)
-            self.lbl1.set_markup("Shutdown")
-        elif data == "R":
-            pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
-            self.imager.set_from_pixbuf(pr)
-            self.lbl2.set_markup("Reboot")
-        elif data == "U":
-            ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
-            self.images.set_from_pixbuf(ps)
-            self.lbl3.set_markup("Suspend")
-        elif data == "K":
-            plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
-            self.imagelk.set_from_pixbuf(plk)
-            self.lbl4.set_markup("Lock")
-        elif data == "L":
-            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
-            self.imagelo.set_from_pixbuf(plo)
-            self.lbl5.set_markup("Logout")
-        elif data == "Escape":
-            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
-            self.imagec.set_from_pixbuf(plo)
-            self.lbl6.set_markup("Cancel")
-        elif data == "H":
-            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
-            self.imageh.set_from_pixbuf(plo)
-            self.lbl7.set_markup("Hibernate")
+        if not self.active:
+            if data == "S":
+                psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
+                self.imagesh.set_from_pixbuf(psh)
+                self.lbl1.set_markup("Shutdown")
+            elif data == "R":
+                pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
+                self.imager.set_from_pixbuf(pr)
+                self.lbl2.set_markup("Reboot")
+            elif data == "U":
+                ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
+                self.images.set_from_pixbuf(ps)
+                self.lbl3.set_markup("Suspend")
+            elif data == "K":
+                plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
+                self.imagelk.set_from_pixbuf(plk)
+                self.lbl4.set_markup("Lock")
+            elif data == "L":
+                plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
+                self.imagelo.set_from_pixbuf(plo)
+                self.lbl5.set_markup("Logout")
+            elif data == "Escape":
+                plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
+                self.imagec.set_from_pixbuf(plo)
+                self.lbl6.set_markup("Cancel")
+            elif data == "H":
+                plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
+                self.imageh.set_from_pixbuf(plo)
+                self.lbl7.set_markup("Hibernate")
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
@@ -155,6 +156,9 @@ class TransparentWindow(Gtk.Window):
                 self.click_button(widget, key)
 
     def click_button(self, widget, data=None):
+        self.active = True
+        fn.button_toggled(self, data)
+        fn.button_active(self, data, GdkPixbuf)
         if (data == 'L'):
             command = fn._get_logout()
             fn.os.unlink("/tmp/arcologout.lock")
@@ -191,7 +195,8 @@ class TransparentWindow(Gtk.Window):
                     t.start()
                 else:
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>You need to set the wallpaper path in arcologout.conf</b></span>")  # noqa
-
+                    self.Ec.set_sensitive(True)
+                    self.active = False
             else:
                 fn.os.unlink("/tmp/arcologout.lock")
                 self.__exec_cmd(self.cmd_lock)

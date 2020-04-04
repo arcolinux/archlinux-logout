@@ -33,91 +33,92 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
 
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=30)
 
-    Esh = Gtk.EventBox()
-    Esh.connect("button_press_event", self.on_click, "S")
-    Esh.connect("button-press-event", self.on_click)
-    Esh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Esh.connect("enter-notify-event", self.on_mouse_in, "S")  # 2
-    Esh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Esh.connect("leave-notify-event", self.on_mouse_out, "S")  # 2
+    self.Esh = Gtk.EventBox()
+    self.Esh.connect("button_press_event", self.on_click, "S")
+    self.Esh.connect("button-press-event", self.on_click)
+    self.Esh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Esh.connect("enter-notify-event", self.on_mouse_in, "S")  # 2
+    self.Esh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Esh.connect("leave-notify-event", self.on_mouse_out, "S")  # 2
 
-    Er = Gtk.EventBox()
-    Er.connect("button_press_event", self.on_click, "R")
-    Er.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Er.connect("enter-notify-event", self.on_mouse_in, "R")  # 2
-    Er.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Er.connect("leave-notify-event", self.on_mouse_out, "R")  # 2
+    self.Er = Gtk.EventBox()
+    self.Er.connect("button_press_event", self.on_click, "R")
+    self.Er.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Er.connect("enter-notify-event", self.on_mouse_in, "R")  # 2
+    self.Er.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Er.connect("leave-notify-event", self.on_mouse_out, "R")  # 2
 
-    Es = Gtk.EventBox()
-    Es.connect("button_press_event", self.on_click, "U")
-    Es.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Es.connect("enter-notify-event", self.on_mouse_in, "U")  # 2
-    Es.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Es.connect("leave-notify-event", self.on_mouse_out, "U")  # 2
+    self.Es = Gtk.EventBox()
+    self.Es.connect("button_press_event", self.on_click, "U")
+    self.Es.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Es.connect("enter-notify-event", self.on_mouse_in, "U")  # 2
+    self.Es.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Es.connect("leave-notify-event", self.on_mouse_out, "U")  # 2
 
-    Elk = Gtk.EventBox()
-    Elk.connect("button_press_event", self.on_click, "K")
-    Elk.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Elk.connect("enter-notify-event", self.on_mouse_in, "K")  # 2
-    Elk.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Elk.connect("leave-notify-event", self.on_mouse_out, "K")  # 2
+    self.Elk = Gtk.EventBox()
+    self.Elk.connect("button_press_event", self.on_click, "K")
+    self.Elk.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Elk.connect("enter-notify-event", self.on_mouse_in, "K")  # 2
+    self.Elk.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Elk.connect("leave-notify-event", self.on_mouse_out, "K")  # 2
 
-    El = Gtk.EventBox()
-    El.connect("button_press_event", self.on_click, "L")
-    El.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    El.connect("enter-notify-event", self.on_mouse_in, "L")  # 2
-    El.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    El.connect("leave-notify-event", self.on_mouse_out, "L")  # 2
+    self.El = Gtk.EventBox()
+    self.El.connect("button_press_event", self.on_click, "L")
+    self.El.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.El.connect("enter-notify-event", self.on_mouse_in, "L")  # 2
+    self.El.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.El.connect("leave-notify-event", self.on_mouse_out, "L")  # 2
 
-    Ec = Gtk.EventBox()
-    Ec.connect("button_press_event", self.on_click, "Escape")
-    Ec.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Ec.connect("enter-notify-event", self.on_mouse_in, "Escape")  # 2
-    Ec.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Ec.connect("leave-notify-event", self.on_mouse_out, "Escape")  # 2
+    self.Ec = Gtk.EventBox()
+    self.Ec.connect("button_press_event", self.on_click, "Escape")
+    self.Ec.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Ec.connect("enter-notify-event", self.on_mouse_in, "Escape")  # 2
+    self.Ec.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Ec.connect("leave-notify-event", self.on_mouse_out, "Escape")  # 2
 
-    Eh = Gtk.EventBox()
-    Eh.connect("button_press_event", self.on_click, "H")
-    Eh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    Eh.connect("enter-notify-event", self.on_mouse_in, "H")  # 2
-    Eh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    Eh.connect("leave-notify-event", self.on_mouse_out, "H")  # 2
+    self.Eh = Gtk.EventBox()
+    self.Eh.connect("button_press_event", self.on_click, "H")
+    self.Eh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Eh.connect("enter-notify-event", self.on_mouse_in, "H")  # 2
+    self.Eh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Eh.connect("leave-notify-event", self.on_mouse_out, "H")  # 2
 
-    psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
-    self.imagesh = Gtk.Image().new_from_pixbuf(psh)
-
-    pc = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
-    self.imagec = Gtk.Image().new_from_pixbuf(pc)
-
-    pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
-    self.imager = Gtk.Image().new_from_pixbuf(pr)
-
-    ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
-    self.images = Gtk.Image().new_from_pixbuf(ps)
-
-    plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
-    self.imagelk = Gtk.Image().new_from_pixbuf(plk)
-
-    plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
-    self.imagelo = Gtk.Image().new_from_pixbuf(plo)
-
-    ph = GdkPixbuf.Pixbuf().new_from_file_at_size(
-        os.path.join(working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
-    self.imageh = Gtk.Image().new_from_pixbuf(ph)
-
-    Esh.add(self.imagesh)
-    Er.add(self.imager)
-    Es.add(self.images)
-    Elk.add(self.imagelk)
-    El.add(self.imagelo)
-    Ec.add(self.imagec)
-    Eh.add(self.imageh)
+    for button in self.buttons:
+        if button == "shutdown":
+            psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown.svg'), 64, 64)
+            self.imagesh = Gtk.Image().new_from_pixbuf(psh)
+            self.Esh.add(self.imagesh)
+        if button == "cancel":
+            pc = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/cancel.svg'), 64, 64)
+            self.imagec = Gtk.Image().new_from_pixbuf(pc)
+            self.Ec.add(self.imagec)
+        if button == "restart":
+            pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/restart.svg'), 64, 64)
+            self.imager = Gtk.Image().new_from_pixbuf(pr)
+            self.Er.add(self.imager)
+        if button == "suspend":
+            ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/suspend.svg'), 64, 64)
+            self.images = Gtk.Image().new_from_pixbuf(ps)
+            self.Es.add(self.images)
+        if button == "lock":
+            plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/lock.svg'), 64, 64)
+            self.imagelk = Gtk.Image().new_from_pixbuf(plk)
+            self.Elk.add(self.imagelk)
+        if button == "logout":
+            plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/logout.svg'), 64, 64)
+            self.imagelo = Gtk.Image().new_from_pixbuf(plo)
+            self.El.add(self.imagelo)
+        if button == "hibernate":
+            ph = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate.svg'), 64, 64)
+            self.imageh = Gtk.Image().new_from_pixbuf(ph)
+            self.Eh.add(self.imageh)
 
     self.lbl1 = Gtk.Label(label="Shutdown")
     self.lbl2 = Gtk.Label(label="Reboot")
@@ -127,28 +128,36 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     self.lbl6 = Gtk.Label(label="Cancel")
     self.lbl7 = Gtk.Label(label="Hibernate")
 
-    vbox1.pack_start(Esh, False, False, 0)
+    vbox1.pack_start(self.Esh, False, False, 0)
     vbox1.pack_start(self.lbl1, False, False, 0)
-    vbox2.pack_start(Er, False, False, 0)
+    vbox2.pack_start(self.Er, False, False, 0)
     vbox2.pack_start(self.lbl2, False, False, 0)
-    vbox3.pack_start(Es, False, False, 0)
+    vbox3.pack_start(self.Es, False, False, 0)
     vbox3.pack_start(self.lbl3, False, False, 0)
-    vbox4.pack_start(Elk, False, False, 0)
+    vbox4.pack_start(self.Elk, False, False, 0)
     vbox4.pack_start(self.lbl4, False, False, 0)
-    vbox5.pack_start(El, False, False, 0)
+    vbox5.pack_start(self.El, False, False, 0)
     vbox5.pack_start(self.lbl5, False, False, 0)
-    vbox6.pack_start(Ec, False, False, 0)
+    vbox6.pack_start(self.Ec, False, False, 0)
     vbox6.pack_start(self.lbl6, False, False, 0)
-    vbox7.pack_start(Eh, False, False, 0)
+    vbox7.pack_start(self.Eh, False, False, 0)
     vbox7.pack_start(self.lbl7, False, False, 0)
 
-    hbox1.pack_start(vbox6, False, False, 30)
-    hbox1.pack_start(vbox1, False, False, 30)
-    hbox1.pack_start(vbox2, False, False, 30)
-    hbox1.pack_start(vbox3, False, False, 30)
-    hbox1.pack_start(vbox7, False, False, 30)
-    hbox1.pack_start(vbox4, False, False, 30)
-    hbox1.pack_start(vbox5, False, False, 30)
+    for button in self.buttons:
+        if button == "shutdown":
+            hbox1.pack_start(vbox1, False, False, 20)            
+        if button == "cancel":
+            hbox1.pack_start(vbox6, False, False, 20)
+        if button == "restart":
+            hbox1.pack_start(vbox2, False, False, 20)
+        if button == "suspend":
+            hbox1.pack_start(vbox3, False, False, 20)            
+        if button == "lock":
+            hbox1.pack_start(vbox4, False, False, 20)
+        if button == "logout":
+            hbox1.pack_start(vbox5, False, False, 20)
+        if button == "hibernate":
+            hbox1.pack_start(vbox7, False, False, 20)
 
     mainbox2.pack_start(hbox1, True, False, 0)
 
