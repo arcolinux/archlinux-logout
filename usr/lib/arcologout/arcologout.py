@@ -4,6 +4,7 @@
 
 import cairo
 import gi
+import shutil
 import GUI
 import Functions as fn
 import threading
@@ -51,6 +52,12 @@ class TransparentWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
+        if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
+            fn.os.mkdir(fn.home + "/.config/arcologout")
+
+        if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+            shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
+
         screen = self.get_screen()
 
         screens = Gdk.Display.get_default()
@@ -67,7 +74,7 @@ class TransparentWindow(Gtk.Window):
             self.set_visual(visual)
 
         fn.get_config(self, Gdk, fn.config)
-        
+
         if self.buttons is None or self.buttons == ['']:
             self.buttons = self.d_buttons
 
@@ -77,6 +84,25 @@ class TransparentWindow(Gtk.Window):
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
+
+    def on_save_clicked(self, widget):
+        with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
+            lines = f.readlines()
+            f.close()
+
+        pos_opacity = fn._get_position(lines, "opacity")
+        pos_size = fn._get_position(lines, "icon_size")
+        pos_theme = fn._get_position(lines, "theme=")
+        pos_wall = fn._get_position(lines, "lock_wallpaper")
+
+        lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_text())) + "\n"
+        lines[pos_size] = "icon_size=" + str(int(self.icons.get_text())) + "\n"
+        lines[pos_theme] = "theme=" + self.themes.get_text() + "\n"
+        lines[pos_wall] = "lock_wallpaper=" + self.wall.get_text() + "\n"
+
+        with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
+            f.writelines(lines)
+            f.close()
 
     def on_mouse_in(self, widget, event, data):
         if data == self.binds.get('shutdown'):
@@ -114,6 +140,10 @@ class TransparentWindow(Gtk.Window):
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
+        elif data == "settings":
+            pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)
+            self.imageset.set_from_pixbuf(pset)
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
     def on_mouse_out(self, widget, event, data):
@@ -153,6 +183,10 @@ class TransparentWindow(Gtk.Window):
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), self.icon, self.icon)
                 self.imageh.set_from_pixbuf(plo)
                 self.lbl7.set_markup("Hibernate")
+            elif data == "settings":
+                pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'configure.svg'), 48, 48)
+                self.imageset.set_from_pixbuf(pset)
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
@@ -174,36 +208,38 @@ class TransparentWindow(Gtk.Window):
                 self.click_button(widget, key)
 
     def click_button(self, widget, data=None):
-        self.active = True
-        fn.button_toggled(self, data)
-        fn.button_active(self, data, GdkPixbuf)
-        if (data == 'L'):
+
+        if not data == "settings":
+            self.active = True
+            fn.button_toggled(self, data)
+            fn.button_active(self, data, GdkPixbuf)
+        if (data == self.binds.get('logout')):
             command = fn._get_logout()
             fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(command)
             Gtk.main_quit()
 
-        elif (data == 'R'):
+        elif (data == self.binds.get('restart')):
             fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_restart)
             Gtk.main_quit()
 
-        elif (data == 'S'):
+        elif (data == self.binds.get('shutdown')):
             fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_shutdown)
             Gtk.main_quit()
 
-        elif (data == 'U'):
+        elif (data == self.binds.get('suspend')):
             fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_suspend)
             Gtk.main_quit()
 
-        elif (data == 'H'):
+        elif (data == self.binds.get('hibernate')):
             fn.os.unlink("/tmp/arcologout.lock")
             self.__exec_cmd(self.cmd_hibernate)
             Gtk.main_quit()
 
-        elif (data == 'K'):
+        elif (data == self.binds.get('lock')):
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
                 if fn.os.path.isfile(self.wallpaper):
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
@@ -219,6 +255,10 @@ class TransparentWindow(Gtk.Window):
                 fn.os.unlink("/tmp/arcologout.lock")
                 self.__exec_cmd(self.cmd_lock)
                 Gtk.main_quit()
+        elif (data == 'settings'):
+            self.popover.set_relative_to(self.Eset)
+            self.popover.show_all()
+            self.popover.popup()
         else:
             fn.os.unlink("/tmp/arcologout.lock")
             Gtk.main_quit()

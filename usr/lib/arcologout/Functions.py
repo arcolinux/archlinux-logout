@@ -13,7 +13,16 @@ base_dir = os.path.dirname(os.path.realpath(__file__))
 # here = Path(__file__).resolve()
 working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout/"])
 # config = "/etc/arcologout.conf"
-config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
+if os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
+    config = home + "/.config/arcologout/arcologout.conf"
+else:
+    config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
+
+
+def _get_position(lists, value):
+    data = [string for string in lists if value in string]
+    position = lists.index(data[0])
+    return position
 
 
 def cache_bl(self, GLib, Gtk):
