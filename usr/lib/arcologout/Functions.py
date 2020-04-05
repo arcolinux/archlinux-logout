@@ -12,8 +12,8 @@ home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 # here = Path(__file__).resolve()
 working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout/"])
-config = "/etc/arcologout.conf"
-# config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
+# config = "/etc/arcologout.conf"
+config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 
 
 def cache_bl(self, GLib, Gtk):
@@ -48,10 +48,28 @@ def get_config(self, Gdk, config):
             self.wallpaper = self.parser.get("settings", "lock_wallpaper")
         if self.parser.has_option("settings", "buttons"):
             self.buttons = self.parser.get("settings", "buttons").split(",")
+        if self.parser.has_option("settings", "icon_size"):
+            self.icon = int(self.parser.get("settings", "icon_size"))
 
     if self.parser.has_section("commands"):
         if self.parser.has_option("commands", "lock"):
             self.cmd_lock = self.parser.get("commands", "lock")
+
+    if self.parser.has_section("binds"):
+        if self.parser.has_option("binds", "lock"):
+            self.binds['lock'] = self.parser.get("binds", "lock").capitalize()
+        if self.parser.has_option("binds", "restart"):
+            self.binds['restart'] = self.parser.get("binds", "restart").capitalize()
+        if self.parser.has_option("binds", "shutdown"):
+            self.binds['shutdown'] = self.parser.get("binds", "shutdown").capitalize()
+        if self.parser.has_option("binds", "suspend"):
+            self.binds['suspend'] = self.parser.get("binds", "suspend").capitalize()
+        if self.parser.has_option("binds", "hibernate"):
+            self.binds['hibernate'] = self.parser.get("binds", "hibernate").capitalize()
+        if self.parser.has_option("binds", "logout"):
+            self.binds['logout'] = self.parser.get("binds", "logout").capitalize()
+        if self.parser.has_option("binds", "cancel"):
+            self.binds['cancel'] = self.parser.get("binds", "cancel").capitalize()
 
     if self.parser.has_section("themes"):
         if self.parser.has_option("themes", "theme"):
@@ -91,39 +109,39 @@ def _get_logout():
 
 def button_active(self, data, GdkPixbuf):
     try:
-        if data == "S":
+        if data == self.binds.get('shutdown'):
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
-        elif data == "R":
+        elif data == self.binds.get('restart'):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/restart_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
-        elif data == "U":
+        elif data == self.binds.get('suspend'):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
-        elif data == "K":
+        elif data == self.binds.get('lock'):
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/lock_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/lock_blur.svg'), self.icon, self.icon)
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
-        elif data == "L":
+        elif data == self.binds.get('logout'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/logout_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
-        elif data == "Escape":
+        elif data == self.binds.get('cancel'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
-        elif data == "H":
+        elif data == self.binds.get('hibernate'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
-                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), 64, 64)
+                os.path.join(working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
     except:
@@ -138,19 +156,19 @@ def button_toggled(self, data):
     self.Ec.set_sensitive(False)
     self.Eh.set_sensitive(False)
 
-    if data == "S":
+    if data == self.binds.get('shutdown'):
         self.Esh.set_sensitive(True)
-    elif data == "R":
+    elif data == self.binds.get('restart'):
         self.Er.set_sensitive(True)
-    elif data == "U":
+    elif data == self.binds.get('suspend'):
         self.Es.set_sensitive(True)
-    elif data == "K":
+    elif data == self.binds.get('lock'):
         self.Elk.set_sensitive(True)
-    elif data == "L":
+    elif data == self.binds.get('logout'):
         self.El.set_sensitive(True)
-    elif data == "Escape":
+    elif data == self.binds.get('cancel'):
         self.Ec.set_sensitive(True)
-    elif data == "H":
+    elif data == self.binds.get('hibernate'):
         self.Eh.set_sensitive(True)
 
 
