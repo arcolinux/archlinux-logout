@@ -4,7 +4,7 @@
 # =====================================================
 
 
-def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
+def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     mainbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -26,11 +26,11 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
 
     self.Eset = Gtk.EventBox()
     self.Eset.set_name("settings")
-    self.Eset.connect("button_press_event", self.on_click, 'settings')
+    self.Eset.connect("button_press_event", self.on_click, self.binds.get('settings'))
     self.Eset.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Eset.connect("enter-notify-event", self.on_mouse_in, 'settings')  # 2
+    self.Eset.connect("enter-notify-event", self.on_mouse_in, self.binds.get('settings'))  # 2
     self.Eset.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Eset.connect("leave-notify-event", self.on_mouse_out, 'settings')  # 2
+    self.Eset.connect("leave-notify-event", self.on_mouse_out, self.binds.get('settings'))  # 2
 
     pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
         os.path.join(working_dir, 'configure.svg'), 48, 48)
@@ -175,9 +175,15 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
 
     mainbox2.pack_start(hbox1, True, False, 0)
 
-    mainbox3.pack_start(self.Eset, False, False, 0)
-    mainbox4.pack_end(mainbox3, False, False, 0)
-    mainbox.pack_start(mainbox4, False, False, 0)
+    mainbox4.pack_end(self.Eset, False, False, 0)
+    mainbox3.pack_end(mainbox4, False, False, 0)
+
+    # spacers
+    mainbox.pack_start(Gtk.Label(), False, False, 0)
+    mainbox.pack_start(Gtk.Label(), False, False, 0)
+    mainbox.pack_start(Gtk.Label(), False, False, 0)
+
+    mainbox.pack_end(mainbox3, False, False, 0)
     mainbox.pack_start(mainbox2, True, False, 0)
     # mainbox.pack_start(overlayFrame, False, False, 50)
 
@@ -220,14 +226,18 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     self.icons.set_width_chars(True)
     self.icons.set_text(str(self.icon))
 
-    self.themes = Gtk.Entry()
-    self.themes.set_size_request(180, 0)
-    self.themes.set_width_chars(True)
-    self.themes.set_text(self.theme)
+    self.themes = Gtk.ComboBoxText()
+    lists = fn._get_themes()
+    active = 0
+    for x in range(len(lists)):
+        self.themes.append_text(lists[x])
+        if lists[x] == self.theme:
+            active = x
+    self.themes.set_active(active)
 
     btn = Gtk.Button(label="Save Settings")
     btn.connect('clicked', self.on_save_clicked)
-
+    
     hbox3.pack_end(btn, False, False, 10)
 
     hbox.pack_start(lbl8, False, False, 10)
@@ -249,4 +259,4 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk):
     vbox.pack_end(hbox3, False, True, 10)
 
     self.popover.add(vbox)
-    self.popover.set_position(Gtk.PositionType.BOTTOM)
+    self.popover.set_position(Gtk.PositionType.TOP)

@@ -80,7 +80,7 @@ class TransparentWindow(Gtk.Window):
 
         self.fullscreen()
         self.set_app_paintable(True)
-        GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk)
+        GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk, fn)
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
@@ -97,7 +97,7 @@ class TransparentWindow(Gtk.Window):
 
         lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_text())) + "\n"
         lines[pos_size] = "icon_size=" + str(int(self.icons.get_text())) + "\n"
-        lines[pos_theme] = "theme=" + self.themes.get_text() + "\n"
+        lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
         lines[pos_wall] = "lock_wallpaper=" + self.wall.get_text() + "\n"
 
         with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
@@ -141,7 +141,7 @@ class TransparentWindow(Gtk.Window):
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
-        elif data == "settings":
+        elif data == self.binds.get('settings'):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)
             self.imageset.set_from_pixbuf(pset)
@@ -184,7 +184,7 @@ class TransparentWindow(Gtk.Window):
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), self.icon, self.icon)
                 self.imageh.set_from_pixbuf(plo)
                 self.lbl7.set_markup("Hibernate")
-            elif data == "settings":
+            elif data == self.binds.get('settings'):
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'configure.svg'), 48, 48)
                 self.imageset.set_from_pixbuf(pset)
@@ -202,7 +202,7 @@ class TransparentWindow(Gtk.Window):
         context.set_operator(cairo.OPERATOR_OVER)
 
     def on_keypress(self, widget=None, event=None, data=None):
-        self.shortcut_keys = [self.binds.get('cancel'), "S", self.binds.get('restart'), self.binds.get('suspend'), self.binds.get('logout'), self.binds.get('lock'), self.binds.get('hibernate')]
+        self.shortcut_keys = [self.binds.get('cancel'), self.binds.get('shutdown'), self.binds.get('restart'), self.binds.get('suspend'), self.binds.get('logout'), self.binds.get('lock'), self.binds.get('hibernate'), self.binds.get('settings')]
 
         for key in self.shortcut_keys:
             if event.keyval == Gdk.keyval_to_lower(Gdk.keyval_from_name(key)):
@@ -210,7 +210,7 @@ class TransparentWindow(Gtk.Window):
 
     def click_button(self, widget, data=None):
 
-        if not data == "settings":
+        if not data == self.binds.get('settings'):
             self.active = True
             fn.button_toggled(self, data)
             fn.button_active(self, data, GdkPixbuf)
@@ -256,7 +256,8 @@ class TransparentWindow(Gtk.Window):
                 fn.os.unlink("/tmp/arcologout.lock")
                 self.__exec_cmd(self.cmd_lock)
                 Gtk.main_quit()
-        elif (data == 'settings'):
+        elif (data == self.binds.get('settings')):
+            self.themes.grab_focus()
             self.popover.set_relative_to(self.Eset)
             self.popover.show_all()
             self.popover.popup()
