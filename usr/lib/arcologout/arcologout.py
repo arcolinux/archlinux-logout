@@ -103,6 +103,7 @@ class TransparentWindow(Gtk.Window):
         with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
             f.writelines(lines)
             f.close()
+        self.popover.popdown()
 
     def on_mouse_in(self, widget, event, data):
         if data == self.binds.get('shutdown'):
