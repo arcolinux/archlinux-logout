@@ -36,7 +36,8 @@ class TransparentWindow(Gtk.Window):
              'suspend': 'U',
              'hibernate': 'H',
              'logout': 'L',
-             'cancel': 'Escape'}
+             'cancel': 'Escape',
+             'settings': 'P'}
     theme = "standard"
     buttons = None
     active = False
