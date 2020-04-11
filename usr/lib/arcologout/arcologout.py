@@ -53,11 +53,11 @@ class TransparentWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
-            fn.os.mkdir(fn.home + "/.config/arcologout")
+        # if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
+        #     fn.os.mkdir(fn.home + "/.config/arcologout")
 
-        if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
-            shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
+        # if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+        #     shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
 
         screen = self.get_screen()
 
@@ -243,11 +243,20 @@ class TransparentWindow(Gtk.Window):
             Gtk.main_quit()
 
         elif (data == self.binds.get('lock')):
+            state = None
+            if not fn.os.path.isfile("/usr/bin/betterlockscreens"):
+                state = self.message_box("<b>Betterlockscreen</b> was not found on your system\nwould you like to install it?", "NOT FOUND!")
+            if state is False:
+                fn.os.unlink("/tmp/arcologout.lock")
+                Gtk.main_quit()
+            elif state is True:
+                fn.subprocess.run(['pkexec', 'pacman', '-S', '--noconfirm', 'betterlockscreen-git'], shell=False)
+
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
                 if fn.os.path.isfile(self.wallpaper):
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                     t = threading.Thread(target=fn.cache_bl,
-                                         args=(self, GLib, Gtk,))
+                                            args=(self, GLib, Gtk,))
                     t.daemon = True
                     t.start()
                 else:
@@ -273,6 +282,22 @@ class TransparentWindow(Gtk.Window):
     def on_close(self, widget, data):
         fn.os.unlink("/tmp/arcologout.lock")
         Gtk.main_quit()
+
+    def message_box(self, message, title):
+        md = Gtk.MessageDialog(parent=self,
+                               flags=0,
+                               message_type=Gtk.MessageType.INFO,
+                               buttons=Gtk.ButtonsType.YES_NO,
+                               text=title)
+        md.format_secondary_markup(message)  # noqa
+
+        result = md.run()
+        md.destroy()
+
+        if result in (Gtk.ResponseType.OK, Gtk.ResponseType.YES):
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":
