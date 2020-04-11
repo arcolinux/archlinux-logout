@@ -12,7 +12,7 @@
    viewBox="0 0 24 24"
    version="1.1"
    id="svg11"
-   sodipodi:docname="logout.svg"
+   sodipodi:docname="logout_blur.svg"
    inkscape:version="0.92.4 5da689c313, 2019-01-14">
   <metadata
      id="metadata15">
@@ -41,7 +41,7 @@
      showgrid="false"
      inkscape:pagecheckerboard="true"
      inkscape:zoom="9.8333333"
-     inkscape:cx="-29.491525"
+     inkscape:cx="-7.8305085"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -52,20 +52,58 @@
      id="title2">pane-hide</title>
   <desc
      id="desc4">Created with Sketch.</desc>
+  <g
+     style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1;filter:url(#filter876)"
+     fill-rule="evenodd"
+     fill="none"
+     stroke-width="1"
+     stroke="none"
+     id="g829">
+    <g
+       style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+       fill-rule="nonzero"
+       fill="#DDDDDD"
+       transform="translate(6.000000, 5.000000)"
+       id="g827">
+      <path
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+         id="path825"
+         d="M1,0 L1,1.0019531 L10,1.0039062 L10,13.003906 L1,13.003906 L1,14 L11,14.003906 L11,0.0039062 L1,0 Z M4,4.0039062 L4,6.0039062 L0,6.0039062 L0,7.0039062 L4,7.0039062 L4,9.003906 L8,6.5039061 L4,4.0039062 Z" />
+    </g>
+  </g>
   <defs
-     id="defs6" />
+     id="defs6">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter876"
+       x="-0.27276988"
+       width="1.5455398"
+       y="-0.21425942"
+       height="1.4285188">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2501953"
+         id="feGaussianBlur878" />
+    </filter>
+  </defs>
   <g
      id="pane-hide"
-     style="fill:#2a7fff;fill-rule:evenodd;stroke:none;stroke-width:1">
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     style="fill:#ffffff">
     <g
        id="259"
-       transform="translate(6,5)"
-       style="fill:#2a7fff;fill-rule:nonzero">
+       transform="translate(6.000000, 5.000000)"
+       fill="#DDDDDD"
+       fill-rule="nonzero"
+       style="fill:#ffffff">
       <path
-         d="m 1,0 v 1.0019531 l 9,0.00195 V 13.003906 H 1 V 14 l 10,0.0039 V 0.0039062 Z m 3,4.0039062 v 2 H 0 v 1 H 4 V 9.003906 L 8,6.5039061 Z"
+         d="M1,0 L1,1.0019531 L10,1.0039062 L10,13.003906 L1,13.003906 L1,14 L11,14.003906 L11,0.0039062 L1,0 Z M4,4.0039062 L4,6.0039062 L0,6.0039062 L0,7.0039062 L4,7.0039062 L4,9.003906 L8,6.5039061 L4,4.0039062 Z"
          id="Shape"
-         style="fill:#2a7fff"
-         inkscape:connector-curvature="0" />
+         style="fill:#ffffff" />
     </g>
   </g>
 </svg>
