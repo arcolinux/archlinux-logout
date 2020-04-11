@@ -10,11 +10,11 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox3 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     lblbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-    
+
     lbl = Gtk.Label(label="")
 
     self.lbl_stat = Gtk.Label()
-    
+
     lblbox.pack_start(lbl, True, False, 0)
     lblbox.pack_start(self.lbl_stat, True, False, 0)
 
@@ -252,7 +252,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     btn = Gtk.Button(label="Save Settings")
     btn.connect('clicked', self.on_save_clicked)
-    
+
     hbox3.pack_end(btn, False, False, 10)
 
     hbox.pack_start(lbl8, False, False, 10)
@@ -279,7 +279,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox8 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
 
     plbl = Gtk.Label()
-    plbl.set_markup("<span size=\"large\">You can change the lockscreen wallpaper\nwith <b>Arcolinux Betterlockscreen GUI</b></span>")
+    plbl.set_markup("<span size=\"large\">You can change the lockscreen wallpaper\nwith <b>Arcolinux BetterLockScreen</b></span>")
 
     hbox8.pack_end(plbl, False, False, 10)
 
