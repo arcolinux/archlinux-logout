@@ -244,19 +244,16 @@ class TransparentWindow(Gtk.Window):
 
         elif (data == self.binds.get('lock')):
             state = None
-            if not fn.os.path.isfile("/usr/bin/betterlockscreen"):
-                state = self.message_box("<b>Betterlockscreen</b> was not found on your system\nwould you like to install it?", "NOT FOUND!")
-            if state is False:
-                fn.os.unlink("/tmp/arcologout.lock")
-                Gtk.main_quit()
-            elif state is True:
-                fn.subprocess.run(['pkexec', 'pacman', '-S', '--noconfirm', 'betterlockscreen-git'], shell=False)
+            if not fn.os.path.isfile("/usr/local/bin/arcolinux-betterlockscreen"):
+                state = self.message_box("<b>Arcolinux Betterlockscreen GUI</b> was not found on your system\nwould you like to install it?", "NOT FOUND!")
+            if state is True:
+                fn.subprocess.run(['pkexec', 'pacman', '-S', '--noconfirm', 'arcolinux-betterlockscreen-git'], shell=False)
 
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
                 if fn.os.path.isfile(self.wallpaper):
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                     t = threading.Thread(target=fn.cache_bl,
-                                            args=(self, GLib, Gtk,))
+                                         args=(self, GLib, Gtk,))
                     t.daemon = True
                     t.start()
                 else:
