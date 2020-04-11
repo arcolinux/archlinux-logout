@@ -69,6 +69,7 @@ class TransparentWindow(Gtk.Window):
         height = rect.height
 
         self.resize(width, height)
+        # self.move(0, 0)
 
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
@@ -94,12 +95,12 @@ class TransparentWindow(Gtk.Window):
         pos_opacity = fn._get_position(lines, "opacity")
         pos_size = fn._get_position(lines, "icon_size")
         pos_theme = fn._get_position(lines, "theme=")
-        pos_wall = fn._get_position(lines, "lock_wallpaper")
+        # pos_wall = fn._get_position(lines, "lock_wallpaper")
 
         lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_text())) + "\n"
         lines[pos_size] = "icon_size=" + str(int(self.icons.get_text())) + "\n"
         lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
-        lines[pos_wall] = "lock_wallpaper=" + self.wall.get_text() + "\n"
+        # lines[pos_wall] = "lock_wallpaper=" + self.wall.get_text() + "\n"
 
         with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
             f.writelines(lines)

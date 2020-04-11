@@ -193,12 +193,12 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
     hbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
     hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
-    hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+    # hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
 
     lbl8 = Gtk.Label(label="Opacity:")
     lbl9 = Gtk.Label(label="Icon size:")
     lbl10 = Gtk.Label(label="Theme:")
-    lbl11 = Gtk.Label(label="Wallpaper:")
+    # lbl11 = Gtk.Label(label="Wallpaper:")
     # try:
     #     vals = self.opacity*100
     #     ad1 = Gtk.Adjustment(vals, 0, 100, 5, 10, 0)
@@ -211,10 +211,10 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     # self.hscale.set_hexpand(True)
     # self.hscale.set_size_request(150, 0)
     # self.hscale.set_valign(Gtk.Align.START)
-    self.wall = Gtk.Entry()
-    self.wall.set_size_request(180, 0)
-    self.wall.set_width_chars(True)
-    self.wall.set_text(self.wallpaper)
+    # self.wall = Gtk.Entry()
+    # self.wall.set_size_request(180, 0)
+    # self.wall.set_width_chars(True)
+    # self.wall.set_text(self.wallpaper)
 
     self.hscale = Gtk.Entry()
     self.hscale.set_size_request(80, 0)
@@ -249,12 +249,12 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox5.pack_start(lbl10, False, False, 10)
     hbox5.pack_end(self.themes, False, False, 10)
 
-    hbox6.pack_start(lbl11, False, False, 10)
-    hbox6.pack_end(self.wall, False, False, 10)
+    # hbox6.pack_start(lbl11, False, False, 10)
+    # hbox6.pack_end(self.wall, False, False, 10)
 
     vbox.pack_start(hbox, False, True, 10)
     vbox.pack_start(hbox4, False, True, 10)
-    vbox.pack_start(hbox6, False, True, 10)
+    # vbox.pack_start(hbox6, False, True, 10)
     vbox.pack_start(hbox5, False, True, 10)
     vbox.pack_end(hbox3, False, True, 10)
 
