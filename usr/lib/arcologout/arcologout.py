@@ -244,7 +244,7 @@ class TransparentWindow(Gtk.Window):
 
         elif (data == self.binds.get('lock')):
             state = None
-            if not fn.os.path.isfile("/usr/bin/betterlockscreens"):
+            if not fn.os.path.isfile("/usr/bin/betterlockscreen"):
                 state = self.message_box("<b>Betterlockscreen</b> was not found on your system\nwould you like to install it?", "NOT FOUND!")
             if state is False:
                 fn.os.unlink("/tmp/arcologout.lock")
