@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>pane-hide</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+ <title>pane-hide</title>
+ <desc>Created with Sketch.</desc>
+ <g fill="#ff9221" fill-rule="evenodd" filter="url(#filter876)" stroke="#ff9221">
+  <g transform="translate(6 5)" fill="#ff9221" fill-rule="nonzero" stroke="#ff9221">
+   <path d="m1 0v1.002l9 0.0019531v12h-9v0.99609l10 0.003906v-14l-10-0.0039062zm3 4.0039v2h-4v1h4v2l4-2.5-4-2.5z" fill="#ff9221" stroke="#ff9221"/>
+  </g>
+ </g>
+ <defs>
+  <filter id="filter876" x="-.27277" y="-.21426" width="1.5455" height="1.4285" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="1.2501953"/>
+  </filter>
+ </defs>
+ <g id="pane-hide" fill="#ff9221" fill-rule="evenodd">
+  <g transform="translate(6 5)" fill="#ff9221" fill-rule="nonzero">
+   <path id="Shape" d="m1 0v1.002l9 0.0019531v12h-9v0.99609l10 0.003906v-14l-10-0.0039062zm3 4.0039v2h-4v1h4v2l4-2.5-4-2.5z" fill="#ff9221"/>
+  </g>
+ </g>
+</svg>
