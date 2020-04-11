@@ -41,7 +41,7 @@
      showgrid="false"
      inkscape:pagecheckerboard="true"
      inkscape:zoom="9.8333333"
-     inkscape:cx="-29.491525"
+     inkscape:cx="-7.8305085"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -56,30 +56,34 @@
      id="defs6" />
   <g
      id="kdenlive-zindex-down"
-     style="fill:#2a7fff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1">
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     style="fill:#ffffff;fill-opacity:1">
     <g
        id="218"
-       transform="translate(5,3)"
-       style="fill:#2a7fff;fill-opacity:1;fill-rule:nonzero">
+       transform="translate(5.000000, 3.000000)"
+       fill="#DDDDDD"
+       fill-rule="nonzero"
+       style="fill:#ffffff;fill-opacity:1">
       <path
-         d="m 6.5,1.996094 c -0.5522853,0 -1,0.4477148 -1,1 0,0.5522853 0.4477147,1 1,1 0.5522852,0 1,-0.4477147 1,-1 0,-0.5523026 -0.4477021,-1 -1,-1 z m 0,-1 c 1.10457,0 2,0.8954 2,2 0,1.10457 -0.89543,2 -2,2 -1.10457,0 -2,-0.89543 -2,-2 0,-1.10457 0.89543,-2 2,-2 z"
+         d="M6.5,1.996094 C5.94771475,1.996094 5.5,2.44380875 5.5,2.996094 C5.5,3.54837925 5.94771475,3.996094 6.5,3.996094 C7.05228525,3.996094 7.5,3.54837925 7.5,2.996094 C7.5,2.44379143 7.05229793,1.996094 6.5,1.996094 Z M6.5,0.996094 C7.60457,0.996094 8.5,1.891494 8.5,2.996094 C8.5,4.100664 7.60457,4.996094 6.5,4.996094 C5.39543,4.996094 4.5,4.100664 4.5,2.996094 C4.5,1.891524 5.39543,0.996094 6.5,0.996094 Z"
          id="Path"
-         style="fill:#2a7fff;fill-opacity:1"
-         inkscape:connector-curvature="0" />
+         style="fill:#ffffff;fill-opacity:1" />
       <rect
          id="Rectangle"
-         transform="rotate(-90,6.5,10.5)"
+         transform="translate(6.500000, 10.500000) rotate(-90.000000) translate(-6.500000, -10.500000) "
          x="2"
          y="10"
          width="9"
          height="1"
-         style="fill:#2a7fff;fill-opacity:1" />
+         style="fill:#ffffff;fill-opacity:1" />
       <path
-         d="m 3.8754327,13.388791 h 7.0000003 v 1 h -7.0000003 -1 V 6.3887907 h 1 z"
+         d="M3.87543271,13.3887907 L10.8754327,13.3887907 L10.8754327,14.3887907 L3.87543271,14.3887907 L2.87543271,14.3887907 L2.87543271,6.38879071 L3.87543271,6.38879071 L3.87543271,13.3887907 Z"
          id="Combined-Shape"
-         transform="rotate(-45,6.521879,10.742344)"
-         style="fill:#2a7fff;fill-opacity:1"
-         inkscape:connector-curvature="0" />
+         transform="translate(6.521879, 10.742344) rotate(-45.000000) translate(-6.521879, -10.742344) "
+         style="fill:#ffffff;fill-opacity:1" />
     </g>
   </g>
 </svg>

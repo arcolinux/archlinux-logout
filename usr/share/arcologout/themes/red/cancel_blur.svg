@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>action-unavailable</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+ <title>action-unavailable</title>
+ <desc>Created with Sketch.</desc>
+ <g fill="#fff" fill-rule="evenodd" filter="url(#filter825)" stroke="#b30000">
+  <g transform="translate(5 5)" fill="#fff" fill-rule="nonzero" stroke="#b30000">
+   <path d="m7 0c3.863 0 7 3.137 7 7s-3.137 7-7 7-7-3.137-7-7 3.137-7 7-7zm0 13c3.3137 0 6-2.6863 6-6s-2.6863-6-6-6-6 2.6863-6 6 2.6863 6 6 6z"/>
+   <rect transform="translate(7.1153 7.0508) rotate(44) translate(-7.1153 -7.0508)" x="6.6153" y=".55077" width="1" height="13"/>
+  </g>
+ </g>
+ <defs>
+  <filter id="filter825" x="-.24" y="-.24" width="1.48" height="1.48" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="1.4"/>
+  </filter>
+ </defs>
+ <g id="action-unavailable" fill="#fff" fill-rule="evenodd" stroke="#b30000">
+  <g transform="translate(5 5)" fill="#fff" fill-rule="nonzero" stroke="#b30000">
+   <path id="Combined-Shape" d="m7 0c3.863 0 7 3.137 7 7s-3.137 7-7 7-7-3.137-7-7 3.137-7 7-7zm0 13c3.3137 0 6-2.6863 6-6s-2.6863-6-6-6-6 2.6863-6 6 2.6863 6 6 6z"/>
+   <rect transform="translate(7.1153 7.0508) rotate(44) translate(-7.1153 -7.0508)" x="6.6153" y=".55077" width="1" height="13"/>
+  </g>
+ </g>
+</svg>
