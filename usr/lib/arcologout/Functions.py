@@ -57,8 +57,6 @@ def get_config(self, Gdk, config):
     if self.parser.has_section("settings"):
         if self.parser.has_option("settings", "opacity"):
             self.opacity = int(self.parser.get("settings", "opacity"))/100
-        if self.parser.has_option("settings", "lock_wallpaper"):
-            self.wallpaper = self.parser.get("settings", "lock_wallpaper")
         if self.parser.has_option("settings", "buttons"):
             self.buttons = self.parser.get("settings", "buttons").split(",")
         if self.parser.has_option("settings", "icon_size"):
