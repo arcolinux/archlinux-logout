@@ -37,6 +37,19 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.imageset = Gtk.Image().new_from_pixbuf(pset)
     self.Eset.add(self.imageset)
 
+    self.Elig = Gtk.EventBox()
+    self.Elig.set_name("light")
+    self.Elig.connect("button_press_event", self.on_click, 'light')
+    self.Elig.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
+    self.Elig.connect("enter-notify-event", self.on_mouse_in, 'light')
+    self.Elig.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
+    self.Elig.connect("leave-notify-event", self.on_mouse_out, 'light')
+
+    plig = GdkPixbuf.Pixbuf().new_from_file_at_size(
+        os.path.join(working_dir, 'light.svg'), 48, 48)
+    self.imagelig = Gtk.Image().new_from_pixbuf(plig)
+    self.Elig.add(self.imagelig)
+
     vbox1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox3 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -175,6 +188,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     mainbox2.pack_start(hbox1, True, False, 0)
 
+    mainbox4.pack_start(self.Elig, False, False, 0)
     mainbox4.pack_end(self.Eset, False, False, 0)
     mainbox3.pack_end(mainbox4, False, False, 0)
 
@@ -188,6 +202,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     # mainbox.pack_start(overlayFrame, False, False, 50)
 
     self.popover = Gtk.Popover()
+    self.popover2 = Gtk.Popover()
     vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
     hbox3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
@@ -260,3 +275,13 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     self.popover.add(vbox)
     self.popover.set_position(Gtk.PositionType.TOP)
+
+    hbox8 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+
+    plbl = Gtk.Label()
+    plbl.set_markup("<span size=\"large\">You can change the lockscreen wallpaper\nwith <b>Arcolinux Betterlockscreen GUI</b></span>")
+
+    hbox8.pack_end(plbl, False, False, 10)
+
+    self.popover2.add(hbox8)
+    self.popover2.set_position(Gtk.PositionType.TOP)

@@ -53,11 +53,11 @@ class TransparentWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
-            fn.os.mkdir(fn.home + "/.config/arcologout")
+        # if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
+        #     fn.os.mkdir(fn.home + "/.config/arcologout")
 
-        if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
-            shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
+        # if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+        #     shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
 
         screen = self.get_screen()
 
@@ -147,11 +147,15 @@ class TransparentWindow(Gtk.Window):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)
             self.imageset.set_from_pixbuf(pset)
+        elif data == 'light':
+            pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                fn.os.path.join(fn.working_dir, 'light_blur.svg'), 48, 48)
+            self.imagelig.set_from_pixbuf(pset)
         event.window.set_cursor(Gdk.Cursor(Gdk.CursorType.HAND2))
 
     def on_mouse_out(self, widget, event, data):
         if not self.active:
-            if data == "S":
+            if data == self.binds.get('shutdown'):
                 psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), self.icon, self.icon)
                 self.imagesh.set_from_pixbuf(psh)
@@ -190,6 +194,10 @@ class TransparentWindow(Gtk.Window):
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'configure.svg'), 48, 48)
                 self.imageset.set_from_pixbuf(pset)
+            elif data == 'light':
+                pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
+                    fn.os.path.join(fn.working_dir, 'light.svg'), 48, 48)
+                self.imagelig.set_from_pixbuf(pset)
 
     def on_click(self, widget, event, data):
         self.click_button(widget, data)
@@ -212,10 +220,11 @@ class TransparentWindow(Gtk.Window):
 
     def click_button(self, widget, data=None):
 
-        if not data == self.binds.get('settings'):
+        if not data == self.binds.get('settings') and not data == "light":
             self.active = True
             fn.button_toggled(self, data)
             fn.button_active(self, data, GdkPixbuf)
+
         if (data == self.binds.get('logout')):
             command = fn._get_logout()
             fn.os.unlink("/tmp/arcologout.lock")
@@ -269,6 +278,10 @@ class TransparentWindow(Gtk.Window):
             self.popover.set_relative_to(self.Eset)
             self.popover.show_all()
             self.popover.popup()
+        elif (data == 'light'):
+            self.popover2.set_relative_to(self.Elig)
+            self.popover2.show_all()
+            self.popover2.popup()
         else:
             fn.os.unlink("/tmp/arcologout.lock")
             Gtk.main_quit()
