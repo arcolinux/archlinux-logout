@@ -54,11 +54,11 @@ class TransparentWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        # if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
-        #     fn.os.mkdir(fn.home + "/.config/arcologout")
+        if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
+            fn.os.mkdir(fn.home + "/.config/arcologout")
 
-        # if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
-        #     shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
+        if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+            shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
 
         screen = self.get_screen()
 
