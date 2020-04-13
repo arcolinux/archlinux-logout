@@ -38,7 +38,8 @@ class TransparentWindow(Gtk.Window):
              'logout': 'L',
              'cancel': 'Escape',
              'settings': 'P'}
-    theme = "standard"
+    theme = "white"
+    hover = "#ffffff"
     buttons = None
     active = False
 
@@ -53,11 +54,11 @@ class TransparentWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_position(Gtk.WindowPosition.CENTER)
 
-        if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
-            fn.os.mkdir(fn.home + "/.config/arcologout")
+        # if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
+        #     fn.os.mkdir(fn.home + "/.config/arcologout")
 
-        if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
-            shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
+        # if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+        #     shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
 
         screen = self.get_screen()
 
@@ -75,7 +76,7 @@ class TransparentWindow(Gtk.Window):
         if visual and screen.is_composited():
             self.set_visual(visual)
 
-        fn.get_config(self, Gdk, fn.config)
+        fn.get_config(self, Gdk, Gtk, fn.config)
 
         if self.buttons is None or self.buttons == ['']:
             self.buttons = self.d_buttons
@@ -95,12 +96,12 @@ class TransparentWindow(Gtk.Window):
         pos_opacity = fn._get_position(lines, "opacity")
         pos_size = fn._get_position(lines, "icon_size")
         pos_theme = fn._get_position(lines, "theme=")
-        # pos_wall = fn._get_position(lines, "lock_wallpaper")
+        pos_color = fn._get_position(lines, "hover_color")
 
         lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_text())) + "\n"
         lines[pos_size] = "icon_size=" + str(int(self.icons.get_text())) + "\n"
         lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
-        # lines[pos_wall] = "lock_wallpaper=" + self.wall.get_text() + "\n"
+        lines[pos_color] = "hover_color=" + self.hovers.get_text() + "\n"
 
         with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
             f.writelines(lines)
@@ -112,37 +113,37 @@ class TransparentWindow(Gtk.Window):
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
-            self.lbl1.set_markup("<span foreground=\"white\">Shutdown</span>")
+            self.lbl1.set_markup("<span foreground=\"" + self.hover + "\">Shutdown</span>")
         elif data == self.binds.get('restart'):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
-            self.lbl2.set_markup("<span foreground=\"white\">Restart</span>")
+            self.lbl2.set_markup("<span foreground=\"" + self.hover + "\">Reboot</span>")
         elif data == self.binds.get('suspend'):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
-            self.lbl3.set_markup("<span foreground=\"white\">Suspend</span>")
+            self.lbl3.set_markup("<span foreground=\"" + self.hover + "\">Suspend</span>")
         elif data == self.binds.get('lock'):
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock_blur.svg'), self.icon, self.icon)
             self.imagelk.set_from_pixbuf(plk)
-            self.lbl4.set_markup("<span foreground=\"white\">Lock</span>")
+            self.lbl4.set_markup("<span foreground=\"" + self.hover + "\">Lock</span>")
         elif data == self.binds.get('logout'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
-            self.lbl5.set_markup("<span foreground=\"white\">Logout</span>")
+            self.lbl5.set_markup("<span foreground=\"" + self.hover + "\">Logout</span>")
         elif data == self.binds.get('cancel'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
-            self.lbl6.set_markup("<span foreground=\"white\">Cancel</span>")
+            self.lbl6.set_markup("<span foreground=\"" + self.hover + "\">Cancel</span>")
         elif data == self.binds.get('hibernate'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
-            self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
+            self.lbl7.set_markup("<span foreground=\"" + self.hover + "\">Hibernate</span>")
         elif data == self.binds.get('settings'):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)

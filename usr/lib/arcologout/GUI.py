@@ -148,13 +148,20 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
             self.Eh.add(self.imageh)
 
     self.lbl1 = Gtk.Label(label="Shutdown")
+    self.lbl1.set_name("lbl")
     self.lbl2 = Gtk.Label(label="Reboot")
+    self.lbl2.set_name("lbl")
     self.lbl3 = Gtk.Label(label="Suspend")
+    self.lbl3.set_name("lbl")
     self.lbl4 = Gtk.Label(label="Lock")
+    self.lbl4.set_name("lbl")
     self.lbl5 = Gtk.Label(label="Logout")
+    self.lbl5.set_name("lbl")
     self.lbl6 = Gtk.Label(label="Cancel")
+    self.lbl6.set_name("lbl")
     self.lbl7 = Gtk.Label(label="Hibernate")
-
+    self.lbl7.set_name("lbl")
+    
     vbox1.pack_start(self.Esh, False, False, 0)
     vbox1.pack_start(self.lbl1, False, False, 0)
     vbox2.pack_start(self.Er, False, False, 0)
@@ -208,11 +215,12 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
     hbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
     hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
-    # hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+    hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
 
     lbl8 = Gtk.Label(label="Opacity:")
     lbl9 = Gtk.Label(label="Icon size:")
     lbl10 = Gtk.Label(label="Theme:")
+    lbl11 = Gtk.Label(label="Hover color:")
     # lbl11 = Gtk.Label(label="Wallpaper:")
     # try:
     #     vals = self.opacity*100
@@ -241,6 +249,11 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.icons.set_width_chars(True)
     self.icons.set_text(str(self.icon))
 
+    self.hovers = Gtk.Entry()
+    self.hovers.set_size_request(80, 0)
+    self.hovers.set_width_chars(True)
+    self.hovers.set_text(str(self.hover))
+
     self.themes = Gtk.ComboBoxText()
     lists = fn._get_themes()
     active = 0
@@ -264,12 +277,12 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox5.pack_start(lbl10, False, False, 10)
     hbox5.pack_end(self.themes, False, False, 10)
 
-    # hbox6.pack_start(lbl11, False, False, 10)
-    # hbox6.pack_end(self.wall, False, False, 10)
+    hbox6.pack_start(lbl11, False, False, 10)
+    hbox6.pack_end(self.hovers, False, False, 10)
 
     vbox.pack_start(hbox, False, True, 10)
     vbox.pack_start(hbox4, False, True, 10)
-    # vbox.pack_start(hbox6, False, True, 10)
+    vbox.pack_start(hbox6, False, True, 10)
     vbox.pack_start(hbox5, False, True, 10)
     vbox.pack_end(hbox3, False, True, 10)
 
