@@ -89,7 +89,7 @@ class TransparentWindow(Gtk.Window):
         if self.buttons is None or self.buttons == ['']:
             self.buttons = self.d_buttons
 
-        # self.fullscreen()
+        self.fullscreen()
         self.set_app_paintable(True)
         self.present()
         
