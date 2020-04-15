@@ -5,6 +5,8 @@
 
 
 def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
+    container = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+    spacer = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     mainbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
     mainbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -20,7 +22,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     overlayFrame = Gtk.Overlay()
     overlayFrame.add(lblbox)
-    overlayFrame.add_overlay(mainbox)
+    overlayFrame.add_overlay(container)
 
     self.add(overlayFrame)
 
@@ -57,6 +59,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     vbox5 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox6 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     vbox7 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    hbox17 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
 
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=30)
 
@@ -195,18 +198,23 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     mainbox2.pack_start(hbox1, True, False, 0)
 
-    mainbox4.pack_start(self.Elig, False, False, 0)
-    mainbox4.pack_end(self.Eset, False, False, 0)
+    # mainbox4.pack_start(self.Elig, False, False, 0)
+    mainbox4.pack_start(self.Eset, False, False, 0)
     mainbox3.pack_end(mainbox4, False, False, 0)
 
     # spacers
-    mainbox.pack_start(Gtk.Label(), False, False, 0)
-    mainbox.pack_start(Gtk.Label(), False, False, 0)
-    mainbox.pack_start(Gtk.Label(), False, False, 0)
+    hbox17.pack_start(self.Elig, False, False, 0)
+    mainbox.pack_start(hbox17, False, False, 0)
+    # mainbox.pack_start(Gtk.Label(), False, False, 0)
+    # mainbox.pack_start(Gtk.Label(), False, False, 0)
 
     mainbox.pack_end(mainbox3, False, False, 0)
     mainbox.pack_start(mainbox2, True, False, 0)
-    # mainbox.pack_start(overlayFrame, False, False, 50)
+    mainbox.set_size_request(self.single_width, 0)
+    container.pack_start(mainbox, False, False, 0)
+    if self.single_width < self.width:
+        container.pack_start(spacer, True, True, 0)
+        spacer.pack_start(Gtk.Label(label=""), True, True, 0)
 
     self.popover = Gtk.Popover()
     self.popover2 = Gtk.Popover()

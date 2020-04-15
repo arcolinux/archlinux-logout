@@ -44,15 +44,18 @@ class TransparentWindow(Gtk.Window):
     active = False
 
     def __init__(self):
-        super(TransparentWindow, self).__init__(title="Arcolinux Logout")
+        super(TransparentWindow, self).__init__(type=Gtk.WindowType.POPUP, title="Arcolinux Logout")
+        # Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
+        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.set_size_request(300, 220)
-        self.monitor = 0
         self.connect('delete-event', self.on_close)
+        self.connect('destroy', self.on_close)
         self.connect('draw', self.draw)
         self.connect("key-press-event", self.on_keypress)
         self.connect("window-state-event", self.on_window_state_event)
         self.set_decorated(False)
-        self.set_position(Gtk.WindowPosition.CENTER)
+
+        self.monitor = 0
 
         if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
             fn.os.mkdir(fn.home + "/.config/arcologout")
@@ -60,16 +63,28 @@ class TransparentWindow(Gtk.Window):
         if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
             shutil.copy("/etc/arcologout.conf", fn.home + "/.config/arcologout/arcologout.conf")
 
-        screen = self.get_screen()
+        # s = Gdk.Screen.get_default()
+        # self.width = s.width()
+        # height = s.height()
 
         screens = Gdk.Display.get_default()
+        s = screens.get_n_monitors()
+
+        self.width = 0
+        for x in range(s):
+            sc = screens.get_monitor(x)
+            rec = sc.get_geometry()
+            self.width += rec.width
+
+        screen = self.get_screen()
+
         monitor = screens.get_monitor(0)
         rect = monitor.get_geometry()
 
-        width = rect.width
+        self.single_width = rect.width
         height = rect.height
 
-        self.resize(width, height)
+        self.resize(self.width, height)
         # self.move(0, 0)
 
         visual = screen.get_rgba_visual()
@@ -81,12 +96,16 @@ class TransparentWindow(Gtk.Window):
         if self.buttons is None or self.buttons == ['']:
             self.buttons = self.d_buttons
 
-        self.fullscreen()
+        # self.fullscreen()
         self.set_app_paintable(True)
+        self.present()
+        
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk, fn)
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
+        self.show_all()
+        Gtk.main()
 
     def on_save_clicked(self, widget):
         with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
@@ -296,7 +315,7 @@ class TransparentWindow(Gtk.Window):
 
     def message_box(self, message, title):
         md = Gtk.MessageDialog(parent=self,
-                               flags=0,
+                               model=True,
                                message_type=Gtk.MessageType.INFO,
                                buttons=Gtk.ButtonsType.YES_NO,
                                text=title)
@@ -316,8 +335,8 @@ if __name__ == "__main__":
         with open("/tmp/arcologout.pid", "w") as f:
             f.write(str(fn.os.getpid()))
             f.close()
-        w = TransparentWindow()
-        w.show_all()
-        Gtk.main()
+        TransparentWindow()
+        # w.show_all()
+        # Gtk.main()
     else:
         print("something")
