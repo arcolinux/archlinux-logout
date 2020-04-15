@@ -28,11 +28,11 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     self.Eset = Gtk.EventBox()
     self.Eset.set_name("settings")
-    self.Eset.connect("button_press_event", self.on_click, self.binds.get('settings'))
+    self.Eset.connect("button_press_event", self.on_click, "P")
     self.Eset.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Eset.connect("enter-notify-event", self.on_mouse_in, self.binds.get('settings'))  # 2
+    self.Eset.connect("enter-notify-event", self.on_mouse_in, "P")  # 2
     self.Eset.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Eset.connect("leave-notify-event", self.on_mouse_out, self.binds.get('settings'))  # 2
+    self.Eset.connect("leave-notify-event", self.on_mouse_out, "P")  # 2
 
     pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
         os.path.join(working_dir, 'configure.svg'), 48, 48)
@@ -64,54 +64,53 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=30)
 
     self.Esh = Gtk.EventBox()
-    self.Esh.connect("button_press_event", self.on_click, self.binds.get('shutdown'))
-    self.Esh.connect("button-press-event", self.on_click)
+    self.Esh.connect("button_press_event", self.on_click, "S")
     self.Esh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Esh.connect("enter-notify-event", self.on_mouse_in, self.binds.get('shutdown'))  # 2
+    self.Esh.connect("enter-notify-event", self.on_mouse_in, "S")  # 2
     self.Esh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Esh.connect("leave-notify-event", self.on_mouse_out, self.binds.get('shutdown'))  # 2
+    self.Esh.connect("leave-notify-event", self.on_mouse_out, "S")  # 2
 
     self.Er = Gtk.EventBox()
-    self.Er.connect("button_press_event", self.on_click, self.binds.get('restart'))
+    self.Er.connect("button_press_event", self.on_click, "R")
     self.Er.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Er.connect("enter-notify-event", self.on_mouse_in, self.binds.get('restart'))  # 2
+    self.Er.connect("enter-notify-event", self.on_mouse_in, "R")  # 2
     self.Er.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Er.connect("leave-notify-event", self.on_mouse_out, self.binds.get('restart'))  # 2
+    self.Er.connect("leave-notify-event", self.on_mouse_out, "R")  # 2
 
     self.Es = Gtk.EventBox()
-    self.Es.connect("button_press_event", self.on_click, self.binds.get('suspend'))
+    self.Es.connect("button_press_event", self.on_click, "U")
     self.Es.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Es.connect("enter-notify-event", self.on_mouse_in, self.binds.get('suspend'))  # 2
+    self.Es.connect("enter-notify-event", self.on_mouse_in, "U")  # 2
     self.Es.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Es.connect("leave-notify-event", self.on_mouse_out, self.binds.get('suspend'))  # 2
+    self.Es.connect("leave-notify-event", self.on_mouse_out, "U")  # 2
 
     self.Elk = Gtk.EventBox()
-    self.Elk.connect("button_press_event", self.on_click, self.binds.get('lock'))
+    self.Elk.connect("button_press_event", self.on_click, "K")
     self.Elk.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Elk.connect("enter-notify-event", self.on_mouse_in, self.binds.get('lock'))  # 2
+    self.Elk.connect("enter-notify-event", self.on_mouse_in, "K")  # 2
     self.Elk.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Elk.connect("leave-notify-event", self.on_mouse_out, self.binds.get('lock'))  # 2
+    self.Elk.connect("leave-notify-event", self.on_mouse_out, "K")  # 2
 
     self.El = Gtk.EventBox()
-    self.El.connect("button_press_event", self.on_click, self.binds.get('logout'))
+    self.El.connect("button_press_event", self.on_click, "L")
     self.El.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.El.connect("enter-notify-event", self.on_mouse_in, self.binds.get('logout'))  # 2
+    self.El.connect("enter-notify-event", self.on_mouse_in, "L")  # 2
     self.El.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.El.connect("leave-notify-event", self.on_mouse_out, self.binds.get('logout'))  # 2
+    self.El.connect("leave-notify-event", self.on_mouse_out, "L")  # 2
 
     self.Ec = Gtk.EventBox()
-    self.Ec.connect("button_press_event", self.on_click, self.binds.get('cancel'))
+    self.Ec.connect("button_press_event", self.on_click, "Escape")
     self.Ec.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Ec.connect("enter-notify-event", self.on_mouse_in, self.binds.get('cancel'))  # 2
+    self.Ec.connect("enter-notify-event", self.on_mouse_in, "Escape")  # 2
     self.Ec.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Ec.connect("leave-notify-event", self.on_mouse_out, self.binds.get('cancel'))  # 2
+    self.Ec.connect("leave-notify-event", self.on_mouse_out, "Escape")  # 2
 
     self.Eh = Gtk.EventBox()
-    self.Eh.connect("button_press_event", self.on_click, self.binds.get('hibernate'))
+    self.Eh.connect("button_press_event", self.on_click, "H")
     self.Eh.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)  # 1
-    self.Eh.connect("enter-notify-event", self.on_mouse_in, self.binds.get('hibernate'))  # 2
+    self.Eh.connect("enter-notify-event", self.on_mouse_in, "H")  # 2
     self.Eh.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)  # 1
-    self.Eh.connect("leave-notify-event", self.on_mouse_out, self.binds.get('hibernate'))  # 2
+    self.Eh.connect("leave-notify-event", self.on_mouse_out, "H")  # 2
 
     for button in self.buttons:
         if button == "shutdown":
