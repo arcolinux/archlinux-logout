@@ -92,7 +92,7 @@ class TransparentWindow(Gtk.Window):
         self.fullscreen()
         self.set_app_paintable(True)
         self.present()
-        
+
         GUI.GUI(self, Gtk, GdkPixbuf, fn.working_dir, fn.os, Gdk, fn)
         if not fn.os.path.isfile("/tmp/arcologout.lock"):
             with open("/tmp/arcologout.lock", "w") as f:
@@ -328,4 +328,4 @@ if __name__ == "__main__":
         # w.show_all()
         # Gtk.main()
     else:
-        print("something")
+        print("ArcoLinux Logout did not close properly. Remove /tmp/arcologoout.pid with sudo.")
