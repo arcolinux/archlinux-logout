@@ -198,16 +198,17 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox2.pack_start(hbox1, True, False, 0)
 
     # mainbox4.pack_start(self.Elig, False, False, 0)
-    mainbox4.pack_start(self.Eset, False, False, 0)
-    mainbox3.pack_end(mainbox4, False, False, 0)
+    
+    # mainbox3.pack_end(mainbox4, False, False, 0)
 
     # spacers
     hbox17.pack_start(self.Elig, False, False, 0)
+    hbox17.pack_start(self.Eset, False, False, 0)
     mainbox.pack_start(hbox17, False, False, 0)
     # mainbox.pack_start(Gtk.Label(), False, False, 0)
     # mainbox.pack_start(Gtk.Label(), False, False, 0)
 
-    mainbox.pack_end(mainbox3, False, False, 0)
+    # mainbox.pack_end(mainbox3, False, False, 0)
     mainbox.pack_start(mainbox2, True, False, 0)
     mainbox.set_size_request(self.single_width, 0)
     container.pack_start(mainbox, False, False, 0)
