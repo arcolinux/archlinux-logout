@@ -228,7 +228,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     lbl8 = Gtk.Label(label="Opacity:")
     lbl9 = Gtk.Label(label="Icon size:")
     lbl10 = Gtk.Label(label="Theme:")
-    lbl11 = Gtk.Label(label="Hover color:")
+    #lbl11 = Gtk.Label(label="Hover color:")
     # lbl11 = Gtk.Label(label="Wallpaper:")
     try:
         vals = self.opacity*100
@@ -298,8 +298,8 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     hbox5.pack_start(lbl10, False, False, 10)
     hbox5.pack_end(self.themes, False, False, 10)
 
-    hbox6.pack_start(lbl11, False, False, 10)
-    hbox6.pack_end(self.hovers, False, False, 10)
+    #hbox6.pack_start(lbl11, False, False, 10)
+    #hbox6.pack_end(self.hovers, False, False, 10)
 
     vbox.pack_start(hbox, False, True, 10)
     vbox.pack_start(hbox4, False, True, 10)
