@@ -329,4 +329,4 @@ if __name__ == "__main__":
         # w.show_all()
         # Gtk.main()
     else:
-        print("something")
+        print("arcolinux-logout did not close properly. Remove /tmp/arcologout.lock with sudo.")
