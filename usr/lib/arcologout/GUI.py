@@ -230,32 +230,45 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     lbl10 = Gtk.Label(label="Theme:")
     lbl11 = Gtk.Label(label="Hover color:")
     # lbl11 = Gtk.Label(label="Wallpaper:")
-    # try:
-    #     vals = self.opacity*100
-    #     ad1 = Gtk.Adjustment(vals, 0, 100, 5, 10, 0)
-    # except:
-    #     ad1 = Gtk.Adjustment(60, 0, 100, 5, 10, 0)
+    try:
+        vals = self.opacity*100
+        ad1 = Gtk.Adjustment(vals, 0, 100, 5, 10, 0)
+    except:
+        ad1 = Gtk.Adjustment(60, 0, 100, 5, 10, 0)
 
-    # self.hscale = Gtk.Scale(
-    #     orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1)
-    # self.hscale.set_digits(0)
-    # self.hscale.set_hexpand(True)
-    # self.hscale.set_size_request(150, 0)
-    # self.hscale.set_valign(Gtk.Align.START)
+    self.hscale = Gtk.Scale(
+        orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1)
+    self.hscale.set_digits(0)
+    self.hscale.set_hexpand(True)
+    self.hscale.set_size_request(150, 0)
+    self.hscale.set_valign(Gtk.Align.START)
     # self.wall = Gtk.Entry()
     # self.wall.set_size_request(180, 0)
     # self.wall.set_width_chars(True)
     # self.wall.set_text(self.wallpaper)
 
-    self.hscale = Gtk.Entry()
-    self.hscale.set_size_request(80, 0)
-    self.hscale.set_width_chars(True)
-    self.hscale.set_text(str(int(self.opacity*100)))
+    # self.hscale = Gtk.Entry()
+    # self.hscale.set_size_request(80, 0)
+    # self.hscale.set_width_chars(True)
+    # self.hscale.set_text(str(int(self.opacity*100)))
 
-    self.icons = Gtk.Entry()
-    self.icons.set_size_request(80, 0)
-    self.icons.set_width_chars(True)
-    self.icons.set_text(str(self.icon))
+    try:
+        valsi = self.icon
+        ad1i = Gtk.Adjustment(valsi, 0, 100, 5, 10, 0)
+    except:
+        ad1i = Gtk.Adjustment(60, 0, 100, 5, 10, 0)
+
+    self.icons = Gtk.Scale(
+        orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1i)
+    self.icons.set_digits(0)
+    self.icons.set_hexpand(True)
+    self.icons.set_size_request(150, 0)
+    self.icons.set_valign(Gtk.Align.START)
+
+    # self.icons = Gtk.Entry()
+    # self.icons.set_size_request(80, 0)
+    # self.icons.set_width_chars(True)
+    # self.icons.set_text(str(self.icon))
 
     self.hovers = Gtk.Entry()
     self.hovers.set_size_request(80, 0)
