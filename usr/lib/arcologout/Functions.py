@@ -17,7 +17,7 @@ if os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
     config = home + "/.config/arcologout/arcologout.conf"
 else:
     config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
-
+root_config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 
 def _get_position(lists, value):
     data = [string for string in lists if value in string]

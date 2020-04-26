@@ -54,7 +54,7 @@ class TransparentWindow(Gtk.Window):
             fn.os.mkdir(fn.home + "/.config/arcologout")
 
         if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
-            shutil.copy(fn.config, fn.home + "/.config/arcologout/arcologout.conf")
+            shutil.copy(fn.root_config, fn.home + "/.config/arcologout/arcologout.conf")
 
         # s = Gdk.Screen.get_default()
         # self.width = s.width()
@@ -102,24 +102,49 @@ class TransparentWindow(Gtk.Window):
         Gtk.main()
 
     def on_save_clicked(self, widget):
-        with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
-            lines = f.readlines()
-            f.close()
+        
+        try:
+            with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
+                lines = f.readlines()
+                f.close()
+        
+            pos_opacity = fn._get_position(lines, "opacity")
+            pos_size = fn._get_position(lines, "icon_size")
+            pos_theme = fn._get_position(lines, "theme=")
+            # pos_color = fn._get_position(lines, "hover_color")
 
-        pos_opacity = fn._get_position(lines, "opacity")
-        pos_size = fn._get_position(lines, "icon_size")
-        pos_theme = fn._get_position(lines, "theme=")
-        # pos_color = fn._get_position(lines, "hover_color")
+            lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_value())) + "\n"
+            lines[pos_size] = "icon_size=" + str(int(self.icons.get_value())) + "\n"
+            lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
+            # lines[pos_color] = "hover_color=" + self.hovers.get_text() + "\n"
 
-        lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_value())) + "\n"
-        lines[pos_size] = "icon_size=" + str(int(self.icons.get_value())) + "\n"
-        lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
-        # lines[pos_color] = "hover_color=" + self.hovers.get_text() + "\n"
+            with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
+                f.writelines(lines)
+                f.close()
+            self.popover.popdown()
+        except Exception as e:
+            fn.os.unlink(fn.home + "/.config/arcologout/arcologout.conf")
+            if not fn.os.path.isfile(fn.home + "/.config/arcologout/arcologout.conf"):
+                shutil.copy(fn.root_config, fn.home + "/.config/arcologout/arcologout.conf")
+            with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
+                lines = f.readlines()
+                f.close()
+        
+            pos_opacity = fn._get_position(lines, "opacity")
+            pos_size = fn._get_position(lines, "icon_size")
+            pos_theme = fn._get_position(lines, "theme=")
+            # pos_color = fn._get_position(lines, "hover_color")
 
-        with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
-            f.writelines(lines)
-            f.close()
-        self.popover.popdown()
+            lines[pos_opacity] = "opacity=" + str(int(self.hscale.get_value())) + "\n"
+            lines[pos_size] = "icon_size=" + str(int(self.icons.get_value())) + "\n"
+            lines[pos_theme] = "theme=" + self.themes.get_active_text() + "\n"
+            # lines[pos_color] = "hover_color=" + self.hovers.get_text() + "\n"
+
+            with open(fn.home + "/.config/arcologout/arcologout.conf", "w") as f:
+                f.writelines(lines)
+                f.close()
+            self.popover.popdown()
+
 
     def on_mouse_in(self, widget, event, data):
         if data == "S":
