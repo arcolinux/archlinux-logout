@@ -87,8 +87,8 @@ def get_config(self, Gdk, Gtk, config):
     if self.parser.has_section("themes"):
         if self.parser.has_option("themes", "theme"):
             self.theme = self.parser.get("themes", "theme")
-        if self.parser.has_option("themes", "hover_color"):
-            self.hover = self.parser.get("themes", "hover_color")
+        # if self.parser.has_option("themes", "hover_color"):
+        #     self.hover = self.parser.get("themes", "hover_color")
 
     if len(self.theme) > 1:
         style_provider = Gtk.CssProvider()
@@ -124,6 +124,8 @@ def _get_logout():
         return "pkill dwm"
     elif desktop in ("i3", "/usr/share/xsessions/i3"):
         return "pkill i3"
+    elif desktop in ("lxqt", "/usr/share/xsessions/lxqt"):
+        return "pkill lxqt"
     elif desktop in ("spectrwm", "/usr/share/xsessions/spectrwm"):
         return "pkill spectrwm"
     elif desktop in ("xfce", "/usr/share/xsessions/xfce"):

@@ -254,9 +254,9 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
 
     try:
         valsi = self.icon
-        ad1i = Gtk.Adjustment(valsi, 0, 100, 5, 10, 0)
+        ad1i = Gtk.Adjustment(valsi, 0, 300, 5, 10, 0)
     except:
-        ad1i = Gtk.Adjustment(60, 0, 100, 5, 10, 0)
+        ad1i = Gtk.Adjustment(60, 0, 300, 5, 10, 0)
 
     self.icons = Gtk.Scale(
         orientation=Gtk.Orientation.HORIZONTAL, adjustment=ad1i)
@@ -270,10 +270,10 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     # self.icons.set_width_chars(True)
     # self.icons.set_text(str(self.icon))
 
-    self.hovers = Gtk.Entry()
-    self.hovers.set_size_request(80, 0)
-    self.hovers.set_width_chars(True)
-    self.hovers.set_text(str(self.hover))
+    # self.hovers = Gtk.Entry()
+    # self.hovers.set_size_request(80, 0)
+    # self.hovers.set_width_chars(True)
+    # self.hovers.set_text(str(self.hover))
 
     self.themes = Gtk.ComboBoxText()
     lists = fn._get_themes()
