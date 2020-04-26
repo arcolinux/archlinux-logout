@@ -5,6 +5,7 @@
 
 import subprocess
 import os
+import shutil
 from pathlib import Path
 import configparser
 
@@ -47,60 +48,66 @@ def cache_bl(self, GLib, Gtk):
 
 
 def get_config(self, Gdk, Gtk, config):
-    self.parser = configparser.SafeConfigParser()
-    self.parser.read(config)
+    try:
+        self.parser = configparser.SafeConfigParser()
+        self.parser.read(config)
 
-    # Set some safe defaults
-    self.opacity = 0.6
+        # Set some safe defaults
+        self.opacity = 0.6
 
-    # Check if we're using HAL, and init it as required.
-    if self.parser.has_section("settings"):
-        if self.parser.has_option("settings", "opacity"):
-            self.opacity = int(self.parser.get("settings", "opacity"))/100
-        if self.parser.has_option("settings", "buttons"):
-            self.buttons = self.parser.get("settings", "buttons").split(",")
-        if self.parser.has_option("settings", "icon_size"):
-            self.icon = int(self.parser.get("settings", "icon_size"))
-        if self.parser.has_option("settings", "font_size"):
-            self.font = int(self.parser.get("settings", "font_size"))
+        # Check if we're using HAL, and init it as required.
+        if self.parser.has_section("settings"):
+            if self.parser.has_option("settings", "opacity"):
+                self.opacity = int(self.parser.get("settings", "opacity"))/100
+            if self.parser.has_option("settings", "buttons"):
+                self.buttons = self.parser.get("settings", "buttons").split(",")
+            if self.parser.has_option("settings", "icon_size"):
+                self.icon = int(self.parser.get("settings", "icon_size"))
+            if self.parser.has_option("settings", "font_size"):
+                self.font = int(self.parser.get("settings", "font_size"))
 
-    if self.parser.has_section("commands"):
-        if self.parser.has_option("commands", "lock"):
-            self.cmd_lock = self.parser.get("commands", "lock")
+        if self.parser.has_section("commands"):
+            if self.parser.has_option("commands", "lock"):
+                self.cmd_lock = self.parser.get("commands", "lock")
 
-    # if self.parser.has_section("binds"):
-    #     if self.parser.has_option("binds", "lock"):
-    #         self.binds['lock'] = self.parser.get("binds", "lock").capitalize()
-    #     if self.parser.has_option("binds", "restart"):
-    #         self.binds['restart'] = self.parser.get("binds", "restart").capitalize()
-    #     if self.parser.has_option("binds", "shutdown"):
-    #         self.binds['shutdown'] = self.parser.get("binds", "shutdown").capitalize()
-    #     if self.parser.has_option("binds", "suspend"):
-    #         self.binds['suspend'] = self.parser.get("binds", "suspend").capitalize()
-    #     if self.parser.has_option("binds", "hibernate"):
-    #         self.binds['hibernate'] = self.parser.get("binds", "hibernate").capitalize()
-    #     if self.parser.has_option("binds", "logout"):
-    #         self.binds['logout'] = self.parser.get("binds", "logout").capitalize()
-    #     if self.parser.has_option("binds", "cancel"):
-    #         self.binds['cancel'] = self.parser.get("binds", "cancel").capitalize()
-    #     if self.parser.has_option("binds", "settings"):
-    #         self.binds['settings'] = self.parser.get("binds", "settings").capitalize()
+        # if self.parser.has_section("binds"):
+        #     if self.parser.has_option("binds", "lock"):
+        #         self.binds['lock'] = self.parser.get("binds", "lock").capitalize()
+        #     if self.parser.has_option("binds", "restart"):
+        #         self.binds['restart'] = self.parser.get("binds", "restart").capitalize()
+        #     if self.parser.has_option("binds", "shutdown"):
+        #         self.binds['shutdown'] = self.parser.get("binds", "shutdown").capitalize()
+        #     if self.parser.has_option("binds", "suspend"):
+        #         self.binds['suspend'] = self.parser.get("binds", "suspend").capitalize()
+        #     if self.parser.has_option("binds", "hibernate"):
+        #         self.binds['hibernate'] = self.parser.get("binds", "hibernate").capitalize()
+        #     if self.parser.has_option("binds", "logout"):
+        #         self.binds['logout'] = self.parser.get("binds", "logout").capitalize()
+        #     if self.parser.has_option("binds", "cancel"):
+        #         self.binds['cancel'] = self.parser.get("binds", "cancel").capitalize()
+        #     if self.parser.has_option("binds", "settings"):
+        #         self.binds['settings'] = self.parser.get("binds", "settings").capitalize()
 
-    if self.parser.has_section("themes"):
-        if self.parser.has_option("themes", "theme"):
-            self.theme = self.parser.get("themes", "theme")
-        # if self.parser.has_option("themes", "hover_color"):
-        #     self.hover = self.parser.get("themes", "hover_color")
+        if self.parser.has_section("themes"):
+            if self.parser.has_option("themes", "theme"):
+                self.theme = self.parser.get("themes", "theme")
+            # if self.parser.has_option("themes", "hover_color"):
+            #     self.hover = self.parser.get("themes", "hover_color")
 
-    if len(self.theme) > 1:
-        style_provider = Gtk.CssProvider()
-        style_provider.load_from_path(working_dir + 'themes/' + self.theme + '/theme.css')
+        if len(self.theme) > 1:
+            style_provider = Gtk.CssProvider()
+            style_provider.load_from_path(working_dir + 'themes/' + self.theme + '/theme.css')
 
-        Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(),
-            style_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
+            Gtk.StyleContext.add_provider_for_screen(
+                Gdk.Screen.get_default(),
+                style_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            )
+    except Exception as e:
+        print(e)
+        os.unlink(home + "/.config/arcologout/arcologout.conf")
+        if not os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
+            shutil.copy(root_config, home + "/.config/arcologout/arcologout.conf")
 
 
 def _get_logout():
