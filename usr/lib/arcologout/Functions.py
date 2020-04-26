@@ -61,6 +61,8 @@ def get_config(self, Gdk, Gtk, config):
             self.buttons = self.parser.get("settings", "buttons").split(",")
         if self.parser.has_option("settings", "icon_size"):
             self.icon = int(self.parser.get("settings", "icon_size"))
+        if self.parser.has_option("settings", "font_size"):
+            self.font = int(self.parser.get("settings", "font_size"))
 
     if self.parser.has_section("commands"):
         if self.parser.has_option("commands", "lock"):
