@@ -22,7 +22,7 @@ class TransparentWindow(Gtk.Window):
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
-    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%I:%M%P"'
+    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%H:%M"'
     wallpaper = "/usr/share/arcologout/wallpaper.jpg"
     d_buttons = ['cancel',
                  'shutdown',
