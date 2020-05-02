@@ -49,11 +49,11 @@ def cache_bl(self, GLib, Gtk):
 
 def get_config(self, Gdk, Gtk, config):
     try:
-        self.parser = configparser.SafeConfigParser()
+        self.parser = configparser.RawConfigParser()
         self.parser.read(config)
 
         # Set some safe defaults
-        self.opacity = 0.6
+        self.opacity = 60
 
         # Check if we're using HAL, and init it as required.
         if self.parser.has_section("settings"):
@@ -68,7 +68,7 @@ def get_config(self, Gdk, Gtk, config):
 
         if self.parser.has_section("commands"):
             if self.parser.has_option("commands", "lock"):
-                self.cmd_lock = self.parser.get("commands", "lock")
+                self.cmd_lock = str(self.parser.get("commands", "lock"))
 
         # if self.parser.has_section("binds"):
         #     if self.parser.has_option("binds", "lock"):

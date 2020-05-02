@@ -22,7 +22,7 @@ class TransparentWindow(Gtk.Window):
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
-    cmd_lock = "betterlockscreen -l dimblur"
+    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%I:%M%P"'
     wallpaper = "/usr/share/arcologout/wallpaper.jpg"
     d_buttons = ['cancel',
                  'shutdown',
@@ -37,7 +37,7 @@ class TransparentWindow(Gtk.Window):
     font = 11
     buttons = None
     active = False
-    opacity = 80
+    opacity = 50
 
     def __init__(self):
         super(TransparentWindow, self).__init__(type=Gtk.WindowType.POPUP, title="Arcolinux Logout")
