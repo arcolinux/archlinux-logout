@@ -270,26 +270,31 @@ class TransparentWindow(Gtk.Window):
         if (data == "L"):
             command = fn._get_logout()
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             self.__exec_cmd(command)
             Gtk.main_quit()
 
         elif (data == "R"):
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             self.__exec_cmd(self.cmd_restart)
             Gtk.main_quit()
 
         elif (data == "S"):
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             self.__exec_cmd(self.cmd_shutdown)
             Gtk.main_quit()
 
         elif (data == "U"):
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             self.__exec_cmd(self.cmd_suspend)
             Gtk.main_quit()
 
         elif (data == "H"):
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             self.__exec_cmd(self.cmd_hibernate)
             Gtk.main_quit()
 
@@ -320,6 +325,7 @@ class TransparentWindow(Gtk.Window):
             self.popover2.popup()
         else:
             fn.os.unlink("/tmp/arcologout.lock")
+            fn.os.unlink("/tmp/arcologout.pid")
             Gtk.main_quit()
 
     def modal_close(self, widget, signal):
