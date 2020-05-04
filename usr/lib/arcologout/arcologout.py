@@ -37,7 +37,7 @@ class TransparentWindow(Gtk.Window):
     font = 11
     buttons = None
     active = False
-    opacity = 85
+    opacity = 0.8
 
     def __init__(self):
         super(TransparentWindow, self).__init__(type=Gtk.WindowType.POPUP, title="Arcolinux Logout")
