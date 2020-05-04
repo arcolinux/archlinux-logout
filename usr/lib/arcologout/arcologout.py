@@ -22,7 +22,7 @@ class TransparentWindow(Gtk.Window):
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
-    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%I:%M%P"'
+    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%H:%M"'
     wallpaper = "/usr/share/arcologout/wallpaper.jpg"
     d_buttons = ['cancel',
                  'shutdown',
@@ -37,7 +37,7 @@ class TransparentWindow(Gtk.Window):
     font = 11
     buttons = None
     active = False
-    opacity = 50
+    opacity = 85
 
     def __init__(self):
         super(TransparentWindow, self).__init__(type=Gtk.WindowType.POPUP, title="Arcolinux Logout")
@@ -105,12 +105,12 @@ class TransparentWindow(Gtk.Window):
         Gtk.main()
 
     def on_save_clicked(self, widget):
-        
+
         try:
             with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
                 lines = f.readlines()
                 f.close()
-        
+
             pos_opacity = fn._get_position(lines, "opacity")
             pos_size = fn._get_position(lines, "icon_size")
             pos_theme = fn._get_position(lines, "theme=")
@@ -132,7 +132,7 @@ class TransparentWindow(Gtk.Window):
             with open(fn.home + "/.config/arcologout/arcologout.conf", "r") as f:
                 lines = f.readlines()
                 f.close()
-        
+
             pos_opacity = fn._get_position(lines, "opacity")
             pos_size = fn._get_position(lines, "icon_size")
             pos_theme = fn._get_position(lines, "theme=")
