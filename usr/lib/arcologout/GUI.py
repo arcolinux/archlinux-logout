@@ -219,9 +219,9 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox.pack_start(mainbox2, True, False, 0)
     mainbox.set_size_request(self.single_width, 0)
     container.pack_start(mainbox, False, False, 0)
-    if self.single_width < self.width:
-        container.pack_start(spacer, True, True, 0)
-        spacer.pack_start(Gtk.Label(label=""), True, True, 0)
+    # if self.single_width < self.width:
+    #     container.pack_start(spacer, True, True, 0)
+    #     spacer.pack_start(Gtk.Label(label=""), True, True, 0)
 
     self.popover = Gtk.Popover()
     self.popover2 = Gtk.Popover()

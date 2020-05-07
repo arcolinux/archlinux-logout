@@ -9,6 +9,7 @@ import GUI
 import Modal
 import Functions as fn
 import threading
+import signal
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
@@ -40,8 +41,10 @@ class TransparentWindow(Gtk.Window):
     opacity = 0.8
 
     def __init__(self):
-        super(TransparentWindow, self).__init__(type=Gtk.WindowType.POPUP, title="Arcolinux Logout")
+        super(TransparentWindow, self).__init__(type=Gtk.WindowType.TOPLEVEL, title="Arcolinux Logout")
         # Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
+        self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+        self.set_keep_above(True)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.set_size_request(300, 220)
         self.connect('delete-event', self.on_close)
@@ -80,8 +83,8 @@ class TransparentWindow(Gtk.Window):
         self.single_width = rect.width
         height = rect.height
 
-        self.resize(self.width, height)
         self.move(0, 0)
+        self.resize(self.width, height)
 
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
@@ -101,8 +104,6 @@ class TransparentWindow(Gtk.Window):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
 
-        self.show_all()
-        Gtk.main()
 
     def on_save_clicked(self, widget):
 
@@ -336,6 +337,7 @@ class TransparentWindow(Gtk.Window):
 
     def on_close(self, widget, data):
         fn.os.unlink("/tmp/arcologout.lock")
+        fn.os.unlink("/tmp/arcologout.pid")            
         Gtk.main_quit()
 
     def message_box(self, message, title):
@@ -354,13 +356,21 @@ class TransparentWindow(Gtk.Window):
             return False
 
 
+def signal_handler(sig, frame):
+    print('\narcologout is Closing.')
+    fn.os.unlink("/tmp/arcologout.lock")
+    fn.os.unlink("/tmp/arcologout.pid")
+    Gtk.main_quit(0)
+
+
 if __name__ == "__main__":
+    signal.signal(signal.SIGINT, signal_handler)
     if not fn.os.path.isfile("/tmp/arcologout.lock"):
         with open("/tmp/arcologout.pid", "w") as f:
             f.write(str(fn.os.getpid()))
             f.close()
-        TransparentWindow()
-        # w.show_all()
-        # Gtk.main()
+        w = TransparentWindow()
+        w.show_all()
+        Gtk.main()
     else:
         print("arcolinux-logout did not close properly. Remove /tmp/arcologout.lock with sudo.")
