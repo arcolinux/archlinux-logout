@@ -27,7 +27,9 @@ def _get_position(lists, value):
 
 
 def _get_themes():
-    return [x for x in os.listdir(working_dir + "themes")]
+    y = [x for x in os.listdir(working_dir + "themes")]
+    y.sort()
+    return y
 
 
 def cache_bl(self, GLib, Gtk):
