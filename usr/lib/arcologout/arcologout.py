@@ -272,7 +272,7 @@ class TransparentWindow(Gtk.Window):
             command = fn._get_logout()
             fn.os.unlink("/tmp/arcologout.lock")
             fn.os.unlink("/tmp/arcologout.pid")
-            # self.__exec_cmd(command)
+            self.__exec_cmd(command)
             Gtk.main_quit()
 
         elif (data == "R"):
