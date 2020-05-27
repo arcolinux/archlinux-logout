@@ -43,7 +43,7 @@ class TransparentWindow(Gtk.Window):
     def __init__(self):
         super(TransparentWindow, self).__init__(type=Gtk.WindowType.TOPLEVEL, title="Arcolinux Logout")
         # Gtk.Window.__init__(self, type=Gtk.WindowType.TOPLEVEL)
-        self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+        # self.set_type_hint(Gdk.WindowTypeHint.DOCK)
         self.set_keep_above(True)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.set_size_request(300, 220)
@@ -54,7 +54,7 @@ class TransparentWindow(Gtk.Window):
         self.connect("window-state-event", self.on_window_state_event)
         self.set_decorated(False)
 
-        self.monitor = 0
+        # self.monitor = 0
 
         if not fn.os.path.isdir(fn.home + "/.config/arcologout"):
             fn.os.mkdir(fn.home + "/.config/arcologout")
@@ -66,25 +66,25 @@ class TransparentWindow(Gtk.Window):
         # self.width = s.width()
         # height = s.height()
 
-        screens = Gdk.Display.get_default()
-        s = screens.get_n_monitors()
+        # screens = Gdk.Display.get_default()
+        # s = screens.get_n_monitors()
 
         self.width = 0
-        for x in range(s):
-            sc = screens.get_monitor(x)
-            rec = sc.get_geometry()
-            self.width += rec.width
+        # for x in range(s):
+        #     sc = screens.get_monitor(x)
+        #     rec = sc.get_geometry()
+        #     self.width += rec.width
 
         screen = self.get_screen()
 
-        monitor = screens.get_monitor(0)
-        rect = monitor.get_geometry()
+        # monitor = screens.get_monitor(0)
+        # rect = monitor.get_geometry()
 
-        self.single_width = rect.width
-        height = rect.height
+        # self.single_width = rect.width
+        # height = rect.height
 
-        self.move(0, 0)
-        self.resize(self.width, height)
+        # self.move(0, 0)
+        # self.resize(self.width, height)
 
         visual = screen.get_rgba_visual()
         if visual and screen.is_composited():
