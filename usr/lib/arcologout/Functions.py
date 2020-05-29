@@ -143,9 +143,9 @@ def _get_logout():
     elif desktop in ("spectrwm", "/usr/share/xsessions/spectrwm"):
         return "pkill spectrwm"
     elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
-        return "xfce4-session-logout --logout"
+        return "xfce4-session-logout -f -l"
     elif desktop in ("sway", "/usr/bin/sway"):
-        return "pkill sway"        
+        return "pkill sway"
 
     return None
 
