@@ -146,6 +146,10 @@ def _get_logout():
         return "xfce4-session-logout -f -l"
     elif desktop in ("sway", "/usr/bin/sway"):
         return "pkill sway"
+    elif desktop in ("icewm", "/usr/bin/icewm"):
+        return "pkill icewm"
+    elif desktop in ("icewm-session", "/usr/bin/icewm-session"):
+        return "pkill icewm-session"
 
     return None
 
