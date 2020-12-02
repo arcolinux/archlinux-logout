@@ -150,7 +150,8 @@ def _get_logout():
         return "pkill icewm"
     elif desktop in ("icewm-session", "/usr/bin/icewm-session"):
         return "pkill icewm-session"
-
+    elif desktop in ("cwm", "/usr/bin/cwm"):
+        return "pkill cwm"
     return None
 
 
