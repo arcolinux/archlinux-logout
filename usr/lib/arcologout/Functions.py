@@ -153,7 +153,11 @@ def _get_logout():
     elif desktop in ("cwm", "/usr/share/xsessions/cwm"):
         return "pkill cwm"
     elif desktop in ("fvwm3", "/usr/bin/fvwm3"):
-        return "pkill fvwm3"    
+        return "pkill fvwm3"
+    elif desktop in ("stumpwm", "/usr/bin/stumpwm"):
+        return "pkill stumpwm"
+     elif desktop in ("leftwm", "/usr/bin/leftwm"):
+        return "pkill leftwm"
     return None
 
 
