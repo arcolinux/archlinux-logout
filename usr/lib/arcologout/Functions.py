@@ -1,4 +1,3 @@
-
 # =====================================================
 #                  Author Brad Heffernan
 # =====================================================
@@ -19,6 +18,7 @@ if os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
 else:
     config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
 root_config = ''.join([str(Path(__file__).parents[3]), "/etc/arcologout.conf"])
+
 
 def _get_position(lists, value):
     data = [string for string in lists if value in string]
@@ -60,7 +60,7 @@ def get_config(self, Gdk, Gtk, config):
         # Check if we're using HAL, and init it as required.
         if self.parser.has_section("settings"):
             if self.parser.has_option("settings", "opacity"):
-                self.opacity = int(self.parser.get("settings", "opacity"))/100
+                self.opacity = int(self.parser.get("settings", "opacity")) / 100
             if self.parser.has_option("settings", "buttons"):
                 self.buttons = self.parser.get("settings", "buttons").split(",")
             if self.parser.has_option("settings", "icon_size"):
@@ -156,7 +156,7 @@ def _get_logout():
         return "pkill fvwm3"
     elif desktop in ("stumpwm", "/usr/bin/stumpwm"):
         return "pkill stumpwm"
-     elif desktop in ("leftwm", "/usr/bin/leftwm"):
+    elif desktop in ("leftwm", "/usr/bin/leftwm"):
         return "pkill leftwm"
     return None
 
@@ -200,6 +200,7 @@ def button_active(self, data, GdkPixbuf):
             self.lbl7.set_markup("<span foreground=\"white\">Hibernate</span>")
     except:
         pass
+
 
 def button_toggled(self, data):
     self.Esh.set_sensitive(False)

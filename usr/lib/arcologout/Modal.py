@@ -1,5 +1,6 @@
 import gi
 import subprocess
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GdkPixbuf, GLib
 
@@ -10,8 +11,9 @@ class ModalBox(Gtk.Window):
         self.set_size_request(300, 220)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         print(state)
-        lbl = Gtk.Label() 
-        lbl.set_markup("<b>Arcolinux Betterlockscreen GUI</b> was not found on your system\nwould you like to install it?")
+        lbl = Gtk.Label()
+        lbl.set_markup(
+            "<b>Arcolinux Betterlockscreen GUI</b> was not found on your system\nwould you like to install it?")
         self.add(lbl)
 
         if state is True:

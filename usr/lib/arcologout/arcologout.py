@@ -112,7 +112,6 @@ class TransparentWindow(Gtk.Window):
             with open("/tmp/arcologout.lock", "w") as f:
                 f.write("")
 
-
     def on_save_clicked(self, widget):
 
         try:
@@ -157,43 +156,49 @@ class TransparentWindow(Gtk.Window):
                 f.close()
             self.popover.popdown()
 
-
     def on_mouse_in(self, widget, event, data):
         if data == self.binds.get('shutdown'):
             psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown_blur.svg'), self.icon, self.icon)
             self.imagesh.set_from_pixbuf(psh)
-            self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Shutdown</span>")
+            self.lbl1.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Shutdown</span>")
         elif data == self.binds.get('restart'):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart_blur.svg'), self.icon, self.icon)
             self.imager.set_from_pixbuf(pr)
-            self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Reboot</span>")
+            self.lbl2.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Reboot</span>")
         elif data == self.binds.get('suspend'):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend_blur.svg'), self.icon, self.icon)
             self.images.set_from_pixbuf(ps)
-            self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Suspend</span>")
+            self.lbl3.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Suspend</span>")
         elif data == self.binds.get('lock'):
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock_blur.svg'), self.icon, self.icon)
             self.imagelk.set_from_pixbuf(plk)
-            self.lbl4.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Lock</span>")
+            self.lbl4.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Lock</span>")
         elif data == self.binds.get('logout'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout_blur.svg'), self.icon, self.icon)
             self.imagelo.set_from_pixbuf(plo)
-            self.lbl5.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Logout</span>")
+            self.lbl5.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Logout</span>")
         elif data == self.binds.get('cancel'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel_blur.svg'), self.icon, self.icon)
             self.imagec.set_from_pixbuf(plo)
-            self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Cancel</span>")
+            self.lbl6.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Cancel</span>")
         elif data == self.binds.get('hibernate'):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate_blur.svg'), self.icon, self.icon)
             self.imageh.set_from_pixbuf(plo)
-            self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Hibernate</span>")
+            self.lbl7.set_markup(
+                "<span size=\"" + str(self.font) + "000\" foreground=\"" + self.hover + "\">Hibernate</span>")
         elif data == self.binds.get('settings'):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                 fn.os.path.join(fn.working_dir, 'configure_blur.svg'), 48, 48)
@@ -263,7 +268,9 @@ class TransparentWindow(Gtk.Window):
         context.set_operator(cairo.OPERATOR_OVER)
 
     def on_keypress(self, widget=None, event=None, data=None):
-        self.shortcut_keys = [self.binds.get('cancel'), self.binds.get('shutdown'), self.binds.get('restart'), self.binds.get('suspend'), self.binds.get('logout'), self.binds.get('lock'), self.binds.get('hibernate'), self.binds.get('settings')]
+        self.shortcut_keys = [self.binds.get('cancel'), self.binds.get('shutdown'), self.binds.get('restart'),
+                              self.binds.get('suspend'), self.binds.get('logout'), self.binds.get('lock'),
+                              self.binds.get('hibernate'), self.binds.get('settings')]
 
         for key in self.shortcut_keys:
             if event.keyval == Gdk.keyval_to_lower(Gdk.keyval_from_name(key)):
@@ -310,13 +317,15 @@ class TransparentWindow(Gtk.Window):
         elif (data == self.binds.get('lock')):
             if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
                 if fn.os.path.isfile(self.wallpaper):
-                    self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
+                    self.lbl_stat.set_markup(
+                        "<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                     t = threading.Thread(target=fn.cache_bl,
                                          args=(self, GLib, Gtk,))
                     t.daemon = True
                     t.start()
                 else:
-                    self.lbl_stat.set_markup("<span size=\"x-large\"><b>You need to set the wallpaper path in arcologout.conf</b></span>")  # noqa
+                    self.lbl_stat.set_markup(
+                        "<span size=\"x-large\"><b>You need to set the wallpaper path in arcologout.conf</b></span>")  # noqa
                     self.Ec.set_sensitive(True)
                     self.active = False
             else:
@@ -345,7 +354,7 @@ class TransparentWindow(Gtk.Window):
 
     def on_close(self, widget, data):
         fn.os.unlink("/tmp/arcologout.lock")
-        fn.os.unlink("/tmp/arcologout.pid")            
+        fn.os.unlink("/tmp/arcologout.pid")
         Gtk.main_quit()
 
     def message_box(self, message, title):
