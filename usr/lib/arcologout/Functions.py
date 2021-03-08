@@ -144,19 +144,19 @@ def _get_logout():
         return "pkill spectrwm"
     elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
         return "xfce4-session-logout -f -l"
-    elif desktop in ("sway", "/usr/bin/sway"):
+    elif desktop in ("sway", "/usr/share/xsessions/sway"):
         return "pkill sway"
-    elif desktop in ("icewm", "/usr/bin/icewm"):
+    elif desktop in ("icewm", "/usr/share/xsessions/icewm"):
         return "pkill icewm"
-    elif desktop in ("icewm-session", "/usr/bin/icewm-session"):
+    elif desktop in ("icewm-session", "/usr/share/xsessions/icewm-session"):
         return "pkill icewm-session"
     elif desktop in ("cwm", "/usr/share/xsessions/cwm"):
         return "pkill cwm"
     elif desktop in ("fvwm3", "/usr/share/xsessions/fvwm3"):
         return "pkill fvwm3"
-    elif desktop in ("stumpwm", "/usr/bin/stumpwm"):
+    elif desktop in ("stumpwm", "/usr/share/xsessions/stumpwm"):
         return "pkill stumpwm"
-    elif desktop in ("leftwm", "/usr/bin/leftwm"):
+    elif desktop in ("leftwm", "/usr/share/xsessions/leftwm"):
         return "pkill leftwm"
     return None
 
