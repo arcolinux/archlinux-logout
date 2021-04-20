@@ -1,5 +1,6 @@
+
 # =====================================================
-#                  Author Brad Heffernan
+#        Authors Brad Heffernan and Erik Dubois
 # =====================================================
 
 import cairo

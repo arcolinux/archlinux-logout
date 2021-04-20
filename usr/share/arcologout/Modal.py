@@ -1,3 +1,8 @@
+
+# =====================================================
+#        Authors Brad Heffernan and Erik Dubois
+# =====================================================
+
 import gi
 import subprocess
 gi.require_version('Gtk', '3.0')

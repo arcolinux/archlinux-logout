@@ -1,6 +1,6 @@
 
 # =====================================================
-#                  Author Brad Heffernan
+#        Authors Brad Heffernan and Erik Dubois
 # =====================================================
 
 import subprocess
@@ -12,7 +12,7 @@ import configparser
 home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 # here = Path(__file__).resolve()
-working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout/"])
+working_dir = ''.join([str(Path(__file__).parents[2]), "/share/arcologout-themes/"])
 # config = "/etc/arcologout.conf"
 if os.path.isfile(home + "/.config/arcologout/arcologout.conf"):
     config = home + "/.config/arcologout/arcologout.conf"
