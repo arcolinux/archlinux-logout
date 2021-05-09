@@ -317,7 +317,7 @@ class TransparentWindow(Gtk.Window):
                     t.daemon = True
                     t.start()
                 else:
-                    self.lbl_stat.set_markup("<span size=\"x-large\"><b>You need to set the wallpaper path in arcologout.conf</b></span>")  # noqa
+                    self.lbl_stat.set_markup("<span size=\"x-large\"><b>Choose a wallpaper with arcolinux-betterlockscreen</b></span>")  # noqa
                     self.Ec.set_sensitive(True)
                     self.active = False
             else:
