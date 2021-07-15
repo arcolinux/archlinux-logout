@@ -222,7 +222,7 @@ class TransparentWindow(Gtk.Window):
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), self.icon, self.icon)
                 self.images.set_from_pixbuf(ps)
                 self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\">Suspend</span>")
-            elif data == self.binds.get('suspend'):
+            elif data == self.binds.get('lock'):
                 plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), self.icon, self.icon)
                 self.imagelk.set_from_pixbuf(plk)
