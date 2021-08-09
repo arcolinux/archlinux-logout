@@ -132,6 +132,9 @@ def _get_logout():
         return "pkill qtile"
     elif desktop in ("xmonad", "/usr/share/xsessions/xmonad"):
         return "pkill xmonad"
+    #for lxdm
+    elif desktop in ("Xmonad", "/usr/share/xsessions/xmonad"):
+        return "pkill xmonad"
     elif desktop in ("dwm", "/usr/share/xsessions/dwm"):
         return "pkill dwm"
     elif desktop in ("i3", "/usr/share/xsessions/i3"):
@@ -158,6 +161,12 @@ def _get_logout():
         return "pkill stumpwm"
     elif desktop in ("leftwm", "/usr/share/xsessions/leftwm"):
         return "pkill leftwm"
+    elif desktop in ("gnome", "/usr/share/xsessions/gnome"):
+        return "gnome-session-quit --logout --no-prompt"
+    elif desktop in ("gnome-xorg", "/usr/share/xsessions/gnome-xorg"):
+        return "gnome-session-quit --logout --no-prompt"
+    elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
+        return "gnome-session-quit --logout --no-prompt"
     return None
 
 
