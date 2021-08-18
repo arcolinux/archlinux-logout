@@ -24,7 +24,7 @@ class TransparentWindow(Gtk.Window):
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
-    cmd_lock = 'betterlockscreen -l dimblur -- --timestr="%H:%M"'
+    cmd_lock = 'betterlockscreen -l dim -- --time-str="%H:%M"'
     wallpaper = "/usr/share/arcologout/wallpaper.jpg"
     d_buttons = ['cancel',
                  'shutdown',
@@ -309,7 +309,7 @@ class TransparentWindow(Gtk.Window):
             Gtk.main_quit()
 
         elif (data == self.binds.get('lock')):
-            if not fn.os.path.isdir(fn.home + "/.cache/i3lock"):
+            if not fn.os.path.isdir(fn.home + "/.cache/betterlockscreen"):
                 if fn.os.path.isfile(self.wallpaper):
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                     t = threading.Thread(target=fn.cache_bl,
