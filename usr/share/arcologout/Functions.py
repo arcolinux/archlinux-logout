@@ -167,6 +167,8 @@ def _get_logout():
         return "gnome-session-quit --logout --no-prompt"
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
+    elif desktop in ("wmderland", "/usr/share/xsessions/wmderland"):
+        return "pkill wmderland"      
     return None
 
 
