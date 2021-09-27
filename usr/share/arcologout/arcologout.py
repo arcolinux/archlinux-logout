@@ -211,37 +211,37 @@ class TransparentWindow(Gtk.Window):
                 psh = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/shutdown.svg'), self.icon, self.icon)
                 self.imagesh.set_from_pixbuf(psh)
-                self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown</span>")
+                self.lbl1.set_markup("<span size=\"" + str(self.font) + "000\">Shutdown (S)</span>")
             elif data == self.binds.get('restart'):
                 pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/restart.svg'), self.icon, self.icon)
                 self.imager.set_from_pixbuf(pr)
-                self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\">Reboot</span>")
+                self.lbl2.set_markup("<span size=\"" + str(self.font) + "000\">Reboot (R)</span>")
             elif data == self.binds.get('suspend'):
                 ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/suspend.svg'), self.icon, self.icon)
                 self.images.set_from_pixbuf(ps)
-                self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\">Suspend</span>")
+                self.lbl3.set_markup("<span size=\"" + str(self.font) + "000\">Suspend (U)</span>")
             elif data == self.binds.get('lock'):
                 plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/lock.svg'), self.icon, self.icon)
                 self.imagelk.set_from_pixbuf(plk)
-                self.lbl4.set_markup("<span size=\"" + str(self.font) + "000\">Lock</span>")
+                self.lbl4.set_markup("<span size=\"" + str(self.font) + "000\">Lock (K)</span>")
             elif data == self.binds.get('logout'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/logout.svg'), self.icon, self.icon)
                 self.imagelo.set_from_pixbuf(plo)
-                self.lbl5.set_markup("<span size=\"" + str(self.font) + "000\">Logout</span>")
+                self.lbl5.set_markup("<span size=\"" + str(self.font) + "000\">Logout (L)</span>")
             elif data == self.binds.get('cancel'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/cancel.svg'), self.icon, self.icon)
                 self.imagec.set_from_pixbuf(plo)
-                self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\">Cancel</span>")
+                self.lbl6.set_markup("<span size=\"" + str(self.font) + "000\">Cancel (ESC)</span>")
             elif data == self.binds.get('hibernate'):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'themes/' + self.theme + '/hibernate.svg'), self.icon, self.icon)
                 self.imageh.set_from_pixbuf(plo)
-                self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate</span>")
+                self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate (H)</span>")
             elif data == self.binds.get('settings'):
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
                     fn.os.path.join(fn.working_dir, 'configure.svg'), 48, 48)
