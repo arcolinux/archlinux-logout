@@ -162,7 +162,7 @@ def _get_logout():
     elif desktop in ("leftwm", "/usr/share/xsessions/leftwm"):
         return "pkill leftwm"
     elif desktop in ("dusk", "/usr/share/xsessions/dusk"):
-        return "pkill dusk"        
+        return "pkill dusk"
     elif desktop in ("wmderland", "/usr/share/xsessions/wmderland"):
         return "pkill wmderland"
     elif desktop in ("gnome", "/usr/share/xsessions/gnome"):
@@ -171,10 +171,9 @@ def _get_logout():
         return "gnome-session-quit --logout --no-prompt"
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
-    elfi desktop:
-		return "pkill -KILL -u $USER"
+    elif desktop :
+        return "pkill -KILL -u $USER"
     return None
-
 
 def button_active(self, data, GdkPixbuf):
     try:
