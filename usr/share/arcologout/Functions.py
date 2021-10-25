@@ -171,6 +171,8 @@ def _get_logout():
         return "gnome-session-quit --logout --no-prompt"
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
+    elfi desktop:
+		return "pkill -KILL -u $USER"
     return None
 
 
