@@ -149,6 +149,10 @@ def _get_logout():
         return "pkill qtile"
     elif desktop in ("xmonad", "/usr/share/xsessions/xmonad"):
         return "pkill xmonad"
+    elif desktop in ("worm", "/usr/share/xsessions/worm"):
+        return "pkill worm"
+    elif desktop in ("berry", "/usr/share/xsessions/berry"):
+        return "pkill berry"
     #for lxdm
     elif desktop in ("Xmonad", "/usr/share/xsessions/xmonad"):
         return "pkill xmonad"
@@ -189,7 +193,7 @@ def _get_logout():
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
     elif desktop :
-        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad"
+        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry"
     return None
 
 def button_active(self, data, GdkPixbuf):
