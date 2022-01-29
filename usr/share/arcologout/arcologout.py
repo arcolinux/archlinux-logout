@@ -55,7 +55,7 @@ class TransparentWindow(Gtk.Window):
         # self.set_type_hint(Gdk.WindowTypeHint.DOCK)
         self.set_keep_above(True)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
-        self.set_size_request(300, 220)
+        self.set_size_request(1200, 300)
         self.connect('delete-event', self.on_close)
         self.connect('destroy', self.on_close)
         self.connect('draw', self.draw)
