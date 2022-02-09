@@ -75,6 +75,14 @@ def get_config(self, Gdk, Gtk, config):
         if self.parser.has_section("commands"):
             if self.parser.has_option("commands", "lock"):
                 self.cmd_lock = str(self.parser.get("commands", "lock"))
+            if self.parser.has_option("commands", "shutdown"):
+                self.cmd_shutdown = str(self.parser.get("commands", "shutdown"))
+            if self.parser.has_option("commands", "restart"):
+                self.cmd_restart = str(self.parser.get("commands", "restart"))
+            if self.parser.has_option("commands", "suspend"):
+                self.cmd_suspend = str(self.parser.get("commands", "suspend"))
+            if self.parser.has_option("commands", "hibernate"):
+                self.cmd_hibernate = str(self.parser.get("commands", "hibernate"))
 
         if self.parser.has_section("binds"):
             if self.parser.has_option("binds", "lock"):
