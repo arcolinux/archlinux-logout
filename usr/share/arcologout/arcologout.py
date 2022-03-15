@@ -346,7 +346,7 @@ class TransparentWindow(Gtk.Window):
 
     def on_close(self, widget, data):
         fn.os.unlink("/tmp/arcologout.lock")
-        fn.os.unlink("/tmp/arcologout.pid")            
+        fn.os.unlink("/tmp/arcologout.pid")
         Gtk.main_quit()
 
     def message_box(self, message, title):
