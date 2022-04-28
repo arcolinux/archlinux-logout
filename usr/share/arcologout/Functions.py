@@ -8,6 +8,7 @@ import os
 import shutil
 from pathlib import Path
 import configparser
+#import distro
 
 home = os.path.expanduser("~")
 base_dir = os.path.dirname(os.path.realpath(__file__))
@@ -264,3 +265,7 @@ def button_toggled(self, data):
 def file_check(file):
     if os.path.isfile(file):
         return True
+
+#def get_distro(self):
+#print(distro.id())
+#    return(distro.id())
