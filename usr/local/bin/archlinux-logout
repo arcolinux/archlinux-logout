@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+python3 /usr/share/archlinux-logout/archlinux-logout.py

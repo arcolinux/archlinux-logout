@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24px"
+   height="24px"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="restart_blur.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>view-refresh</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     id="namedview14"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="-7.8305085"
+     inkscape:cy="12"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg12" />
+  <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">view-refresh</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     stroke="none"
+     stroke-width="1"
+     style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1;filter:url(#filter839)"
+     id="g837">
+    <g
+       fill="#DDDDDD"
+       style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+       transform="translate(5.000000, 5.000000)"
+       id="g835">
+      <path
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+         id="path831"
+         d="M12.4885979,4 L12.1973068,4 C11.1598786,2.20659589 9.22084707,1 7,1 C3.6862915,1 1,3.6862915 1,7 C1,10.3137085 3.6862915,13 7,13 C9.61243765,13 11.8349158,11.3303847 12.6585886,9 L13.7101213,9 C12.8495721,11.8914889 10.1710206,14 7,14 C3.13400675,14 0,10.8659932 0,7 C0,3.13400675 3.13400675,0 7,0 C8.97567015,0 10.7601747,0.81847727 12.0329334,2.1348516 L12.4885979,4 Z" />
+      <polygon
+         style="fill:#ffffff;stroke:#ffffff;stroke-opacity:1"
+         points="12.75 1.98223305 16.2855339 5.51776695 9.21446609 5.51776695"
+         transform="translate(12.750000, 3.750000) rotate(-225.000000) translate(-12.750000, -3.750000) "
+         id="polygon833" />
+    </g>
+  </g>
+  <defs
+     id="defs6">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter839"
+       x="-0.24"
+       width="1.48"
+       y="-0.24"
+       height="1.48">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.4"
+         id="feGaussianBlur841" />
+    </filter>
+  </defs>
+  <g
+     id="view-refresh"
+     style="fill:#ffffff"
+     stroke-width="1"
+     stroke="none"
+     fill-rule="evenodd"
+     fill="none">
+    <g
+       id="21"
+       transform="translate(5.000000, 5.000000)"
+       style="fill:#ffffff"
+       fill="#DDDDDD">
+      <path
+         d="M12.4885979,4 L12.1973068,4 C11.1598786,2.20659589 9.22084707,1 7,1 C3.6862915,1 1,3.6862915 1,7 C1,10.3137085 3.6862915,13 7,13 C9.61243765,13 11.8349158,11.3303847 12.6585886,9 L13.7101213,9 C12.8495721,11.8914889 10.1710206,14 7,14 C3.13400675,14 0,10.8659932 0,7 C0,3.13400675 3.13400675,0 7,0 C8.97567015,0 10.7601747,0.81847727 12.0329334,2.1348516 L12.4885979,4 Z"
+         id="Combined-Shape"
+         style="fill:#ffffff" />
+      <polygon
+         id="Triangle"
+         transform="translate(12.750000, 3.750000) rotate(-225.000000) translate(-12.750000, -3.750000) "
+         points="12.75 1.98223305 16.2855339 5.51776695 9.21446609 5.51776695"
+         style="fill:#ffffff" />
+    </g>
+  </g>
+</svg>

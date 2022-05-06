@@ -1,1 +1,1 @@
-# ArcoLinux logout
+# ArchLinux logout
