@@ -40,7 +40,10 @@ def cache_bl(self, GLib, Gtk):
                               shell=False,
                               stdout=subprocess.PIPE) as f:
             for line in f.stdout:
-                GLib.idle_add(self.lbl_stat.set_markup, "<span size=\"x-large\"><b>" + line.decode() + "</b></span>")
+                line = str(line)
+                line = line.split(maxsplit=1)[1]
+                line = line[:-3]
+                GLib.idle_add(self.lbl_stat.set_markup, "<span size=\"x-large\"><b>" + line + "</b></span>")
 
         GLib.idle_add(self.lbl_stat.set_text, "")
         os.unlink("/tmp/archlinux-logout.lock")
