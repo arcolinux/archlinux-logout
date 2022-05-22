@@ -308,7 +308,7 @@ class TransparentWindow(Gtk.Window):
             Gtk.main_quit()
 
         elif (data == self.binds.get('lock')):
-            if not fn.os.path.isdir(fn.home + "/.cache/betterlockscreen"):
+            if self.cmd_lock.startswith("betterlockscreen") and not fn.os.path.isdir(fn.home + "/.cache/betterlockscreen"):
                 if fn.os.path.isfile(self.wallpaper):
                     self.lbl_stat.set_markup("<span size=\"x-large\"><b>Caching lockscreen images for a faster locking next time</b></span>")  # noqa
                     t = threading.Thread(target=fn.cache_bl,
