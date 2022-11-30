@@ -170,7 +170,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     self.lbl7 = Gtk.Label()
     self.lbl7.set_markup("<span size=\"" + str(self.font) + "000\">Hibernate (H)</span>")
     self.lbl7.set_name("lbl")
-    
+
     vbox1.pack_start(self.Esh, False, False, 0)
     vbox1.pack_start(self.lbl1, False, False, 0)
     vbox2.pack_start(self.Er, False, False, 0)
@@ -195,8 +195,9 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
             hbox1.pack_start(vbox2, False, False, 20)
         if button == "suspend":
             hbox1.pack_start(vbox3, False, False, 20)
-        if button == "lock":
-            hbox1.pack_start(vbox4, False, False, 20)
+        if fn.sessionw != True:
+            if button == "lock":
+                hbox1.pack_start(vbox4, False, False, 20)
         if button == "logout":
             hbox1.pack_start(vbox5, False, False, 20)
         if button == "hibernate":
@@ -205,7 +206,7 @@ def GUI(self, Gtk, GdkPixbuf, working_dir, os, Gdk, fn):
     mainbox2.pack_start(hbox1, True, False, 0)
 
     # mainbox4.pack_start(self.Elig, False, False, 0)
-    
+
     # mainbox3.pack_end(mainbox4, False, False, 0)
 
     # spacers
