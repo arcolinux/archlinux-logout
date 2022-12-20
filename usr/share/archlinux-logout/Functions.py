@@ -186,8 +186,6 @@ def _get_logout():
         return "pkill spectrwm"
     elif desktop in ("xfce", "/usr/share/xsessions/xfce"):
         return "xfce4-session-logout -f -l"
-    elif desktop in ("sway", "/usr/share/xsessions/sway"):
-        return "pkill sway"
     elif desktop in ("icewm", "/usr/share/xsessions/icewm"):
         return "pkill icewm"
     elif desktop in ("icewm-session", "/usr/share/xsessions/icewm-session"):
@@ -212,8 +210,19 @@ def _get_logout():
         return "gnome-session-quit --logout --no-prompt"
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
+    #wayland desktops
+    elif desktop in ("sway", "/usr/share/wayland-sessions/sway"):
+        return "pkill sway"
+    elif desktop in ("hyprland", "/usr/share/wayland-sessions/hyprland"):
+        return "pkill Hyprland"
+    elif desktop in ("river", "/usr/share/wayland-sessions/river"):
+        return "pkill river"
+    elif desktop in ("wayfire", "/usr/share/wayland-sessions/wayfire"):
+        return "pkill wayfire"
+    elif desktop in ("newm", "/usr/share/wayland-sessions/newm"):
+        return "pkill newm"
     elif desktop :
-        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr"
+        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill hyprland | pkill sway | pkill wayfire | pkill newm | pkill river"
     return None
 
 def button_active(self, data, GdkPixbuf):
