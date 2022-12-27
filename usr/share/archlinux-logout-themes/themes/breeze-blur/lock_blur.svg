@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="lock_blur.svg"
+   id="svg6"
+   version="1.1"
+   viewBox="0 0 32 32">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg6"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="14.971098"
+     inkscape:cx="13.009653"
+     inkscape:zoom="13.140625"
+     showgrid="false"
+     id="namedview8"
+     inkscape:window-height="1021"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#000000"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="false" />
+  <defs
+     id="defs3051">
+    <style
+       id="current-color-scheme"
+       type="text/css">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      </style>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter846"
+       x="-0.16428"
+       width="1.32856"
+       y="-0.16428"
+       height="1.32856">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.6428"
+         id="feGaussianBlur848" />
+    </filter>
+    <filter
+       height="1.32856"
+       y="-0.16428"
+       width="1.32856"
+       x="-0.16428"
+       id="filter846-3"
+       style="color-interpolation-filters:sRGB"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur848-6"
+         stdDeviation="1.6428"
+         inkscape:collect="always" />
+    </filter>
+  </defs>
+  <path
+     id="path4"
+     class="ColorScheme-Text"
+     d="M 16,4 C 9.372583,4 4,9.372583 4,16 4,22.627417 9.372583,28 16,28 22.627417,28 28,22.627417 28,16 28,9.372583 22.627417,4 16,4 Z m 0,1 C 22.075132,5 27,9.924868 27,16 27,22.075132 22.075132,27 16,27 9.924868,27 5,22.075132 5,16 5,9.924868 9.924868,5 16,5 Z m 0,3 c -2.216,0 -4,1.784 -4,4 l 0,4 -2,0 0,1 0,7 1,0 10,0 1,0 0,-8 -1,0 -1,0 0,-4 C 20,9.784 18.216,8 16,8 Z m 0,1 c 1.662,0 3,1.561 3,3.5 l 0,3.5 -6,0 0,-3.5 C 13,10.561 14.338,9 16,9 Z m -5,8 10,0 0,6 -10,0 0,-6 z"
+     style="fill:#ffffff;fill-opacity:1;stroke:none" />
+  <path
+     style="color:#232629;fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter846)"
+     d="M 16,4 C 9.372583,4 4,9.372583 4,16 4,22.627417 9.372583,28 16,28 22.627417,28 28,22.627417 28,16 28,9.372583 22.627417,4 16,4 Z m 0,1 C 22.075132,5 27,9.924868 27,16 27,22.075132 22.075132,27 16,27 9.924868,27 5,22.075132 5,16 5,9.924868 9.924868,5 16,5 Z m 0,3 c -2.216,0 -4,1.784 -4,4 v 4 h -2 v 1 7 h 1 10 1 V 16 H 21 20 V 12 C 20,9.784 18.216,8 16,8 Z m 0,1 c 1.662,0 3,1.561 3,3.5 V 16 H 13 V 12.5 C 13,10.561 14.338,9 16,9 Z m -5,8 h 10 v 6 H 11 Z"
+     class="ColorScheme-Text"
+     id="path4-3" />
+  <path
+     id="path4-3-7"
+     class="ColorScheme-Text"
+     d="M 16,4.0000003 C 9.372583,4.0000003 4.0000002,9.3725833 4.0000002,16 4.0000002,22.627417 9.372583,28 16,28 22.627417,28 28,22.627417 28,16 28,9.3725833 22.627417,4.0000003 16,4.0000003 Z m 0,1 C 22.075132,5.0000003 27,9.924868 27,16 27,22.075132 22.075132,27 16,27 9.924868,27 5.0000002,22.075132 5.0000002,16 5.0000002,9.924868 9.924868,5.0000003 16,5.0000003 Z m 0,3 C 13.784,8.0000003 12,9.784 12,12 v 4 h -2 v 1 7 h 1 10 1 V 16 H 21 20 V 12 C 20,9.784 18.216,8.0000003 16,8.0000003 Z m 0,1 c 1.662,0 3,1.5609997 3,3.4999997 V 16 h -6 v -3.5 c 0,-1.939 1.338,-3.4999997 3,-3.4999997 z M 11,17 h 10 v 6 H 11 Z"
+     style="color:#232629;fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter846-3)" />
+</svg>
