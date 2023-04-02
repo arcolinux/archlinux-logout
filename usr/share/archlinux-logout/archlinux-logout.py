@@ -10,6 +10,8 @@ import GUI
 import Functions as fn
 import threading
 import signal
+import os
+from distro import id
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
@@ -19,10 +21,21 @@ from gi.repository import Gtk, GdkPixbuf, Gdk, Wnck, GLib, GdkX11  # noqa
 
 
 class TransparentWindow(Gtk.Window):
+
+    distr = id()
+
     cmd_shutdown = "systemctl poweroff"
     cmd_restart = "systemctl reboot"
     cmd_suspend = "systemctl suspend"
     cmd_hibernate = "systemctl hibernate"
+
+    if distr == "artix":
+        if os.path.isfile("/usr/bin/loginctl"):
+            cmd_shutdown = "loginctl poweroff"
+            cmd_restart = "loginctl reboot"
+            cmd_suspend = "loginctl suspend"
+            cmd_hibernate = "loginctl hibernate"
+
     cmd_lock = 'betterlockscreen -l dim -- --time-str="%H:%M"'
     wallpaper = "/usr/share/archlinux-betterlockscreen/wallpapers/wallpaper.jpg"
     d_buttons = ['cancel',
