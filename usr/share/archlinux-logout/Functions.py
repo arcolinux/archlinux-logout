@@ -200,6 +200,8 @@ def _get_logout():
         return "pkill leftwm"
     elif desktop in ("hypr", "/usr/share/xsessions/hypr"):
         return "pkill Hypr"
+    elif desktop in ("dk", "/usr/share/xsessions/dk"):
+        return "dkcmd exit"
     elif desktop in ("dusk", "/usr/share/xsessions/dusk"):
         return "pkill dusk"
     elif desktop in ("wmderland", "/usr/share/xsessions/wmderland"):
