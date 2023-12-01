@@ -79,8 +79,6 @@ class TransparentWindow(Gtk.Window):
         self.connect("window-state-event", self.on_window_state_event)
         self.set_decorated(False)
 
-        # self.monitor = 0
-
         if not fn.os.path.isdir(fn.home + "/.config/archlinux-logout"):
             fn.os.mkdir(fn.home + "/.config/archlinux-logout")
 
@@ -92,53 +90,26 @@ class TransparentWindow(Gtk.Window):
                 fn.home + "/.config/archlinux-logout/archlinux-logout.conf",
             )
 
-        # s = Gdk.Screen.get_default()
-        # self.width = s.width()
-        # height = s.height()
-
-        # screens = Gdk.Display.get_default()
-        # s = screens.get_n_monitors()
-
         self.width = 0
-        # for x in range(s):
-        #     sc = screens.get_monitor(x)
-        #     rec = sc.get_geometry()
-        #     self.width += rec.width
+        self.screen = self.get_screen()
 
-        screen = self.get_screen()
+        self.display = Gdk.Display.get_default()
 
-        display = Gdk.Display.get_default()
-        # get all monitors
-        monitors = display.get_n_monitors()
+        seat = self.display.get_default_seat()
 
-        # loop through monitors, get resolution and set_size_request using the width, height dimensions
-        print(f"[INFO] Monitors = {monitors}")
-        for i in range(monitors):
-            monitor = display.get_monitor(i)
-            geometry = monitor.get_geometry()
-            print(f"[INFO] Setting Monitor {i}: {geometry.width}x{geometry.height}")
-            self.set_size_request(geometry.width, geometry.height)
-            self.fullscreen_on_monitor(screen,i)
+        self.pointer = Gdk.Seat.get_pointer(seat)
 
-        # monitor = screens.get_monitor(0)
-        # rect = monitor.get_geometry()
-
-        # self.single_width = rect.width
-        # height = rect.height
-
-        # self.move(0, 0)
-        # self.resize(self.width, height)
-
-        visual = screen.get_rgba_visual()
-        if visual and screen.is_composited():
+        visual = self.screen.get_rgba_visual()
+        if visual and self.screen.is_composited():
             self.set_visual(visual)
 
         fn.get_config(self, Gdk, Gtk, fn.config)
 
+        self.display_on_monitor()
+
         if self.buttons is None or self.buttons == [""]:
             self.buttons = self.d_buttons
 
-        #self.fullscreen()
         self.set_app_paintable(True)
         self.present()
 
@@ -146,6 +117,72 @@ class TransparentWindow(Gtk.Window):
         if not fn.os.path.isfile("/tmp/archlinux-logout.lock"):
             with open("/tmp/archlinux-logout.lock", "w") as f:
                 f.write("")
+
+    def display_on_monitor(self):
+        print("#### Archlinux Logout ####")
+        try:
+            # test to see this device is a mouse
+            if self.pointer.get_has_cursor():
+                screen = None
+                x = 0
+                y = 0
+                display = None
+
+                session_type = os.environ.get("XDG_SESSION_TYPE")
+
+                if session_type == "wayland":
+                    print(
+                        "[WARN]: Session type = wayland, mouse position can't be tracked"
+                    )
+                elif session_type == "x11":
+                    print("[DEBUG]: Session type = x11")
+
+                # get the screen, x, y coordinates
+                screen, x, y = self.pointer.get_position()
+
+                # X11 compatibility only
+                # Wayland does not allow you to get the x,y coordinates
+                # defaults to showing on first monitor
+
+                if screen is not None and x != 0 and y != 0:
+                    print(f"[DEBUG]: Mouse position x={x} y={y}")
+
+                    # Returns the GdkDisplay to which device is connected
+                    display = self.pointer.get_display()
+
+                    if display is not None:
+                        # use the mouse cursor x,y coordinates
+                        monitor = display.get_monitor_at_point(x, y)
+                        print(
+                            f"[DEBUG]: Monitor: Primary={monitor.is_primary()}, Height={monitor.get_height_mm()}, Width={monitor.get_width_mm()}"
+                        )
+                        geometry = monitor.get_geometry()
+                        print(
+                            f"[DEBUG]: Monitor: Dimension={geometry.width}x{geometry.height}"
+                        )
+                        self.set_size_request(geometry.width, geometry.height)
+                        # move the window using the mouse pointer x,y coordinates
+                        self.move(x, y)
+                        self.fullscreen()
+                else:
+                    # default show on first monitor
+                    self.display_on_default()
+
+            else:
+                # default show on first monitor
+                self.display_on_default()
+        except Exception as e:
+            print(f"[ERROR]: Exception in display_on_monitor(): {e}")
+
+    # fallback should only be used if the mouse position can't be captured such as when on wayland
+    def display_on_default(self):
+        # default show on first monitor
+        monitor = self.display.get_monitor(0)
+        geometry = monitor.get_geometry()
+        print("[DEBUG]: Showing on first monitor")
+        print(f"[DEBUG]: Dimension: {geometry.width}x{geometry.height}")
+        self.set_size_request(geometry.width, geometry.height)
+        self.fullscreen_on_monitor(self.screen, 0)
 
     def on_save_clicked(self, widget):
         try:
