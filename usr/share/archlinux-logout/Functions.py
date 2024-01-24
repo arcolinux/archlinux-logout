@@ -242,7 +242,7 @@ def _get_logout():
     elif desktop in ("sway", "/usr/share/wayland-sessions/sway"):
         return "pkill sway"
     elif desktop in ("hyprland", "/usr/share/wayland-sessions/hyprland"):
-        return "loginctl kill-user $(whoami)"
+        return "hyprctl dispatch exit"
     elif desktop in ("river", "/usr/share/wayland-sessions/river"):
         return "pkill river"
     elif desktop in ("wayfire", "/usr/share/wayland-sessions/wayfire"):
@@ -250,7 +250,7 @@ def _get_logout():
     elif desktop in ("newm", "/usr/share/wayland-sessions/newm"):
         return "pkill newm"
     elif desktop:
-        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill hyprland | pkill sway | pkill wayfire | pkill newm | pkill river"
+        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill sway | pkill wayfire | pkill newm | pkill river"
     return None
 
 
