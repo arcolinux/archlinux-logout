@@ -238,6 +238,9 @@ def _get_logout():
         return "gnome-session-quit --logout --no-prompt"
     elif desktop in ("gnome-classic", "/usr/share/xsessions/gnome-classic"):
         return "gnome-session-quit --logout --no-prompt"
+    elif desktop in ("nimdow", "/usr/share/xsessions/nimdow"):
+        return "pkill nimdow"
+
     # wayland desktops
     elif desktop in ("sway", "/usr/share/wayland-sessions/sway"):
         return "pkill sway"
@@ -250,7 +253,7 @@ def _get_logout():
     elif desktop in ("newm", "/usr/share/wayland-sessions/newm"):
         return "pkill newm"
     elif desktop:
-        return "pkill awesome | pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill sway | pkill wayfire | pkill newm | pkill river"
+        return "pkill awesome | pkill nimdow| pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill sway | pkill wayfire | pkill newm | pkill river"
     return None
 
 
