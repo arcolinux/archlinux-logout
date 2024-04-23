@@ -1,5 +1,10 @@
 # ArchLinux logout
 
+This app depends on the following packages.
+
+depends=('python-psutil' 'libwnck3' 'python-cairo' 'betterlockscreen' 'python-distro')
+
+
 This widget, displays a transparent window allowing quick access to various power features:
 
 - Logout (L)
