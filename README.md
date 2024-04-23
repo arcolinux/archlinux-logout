@@ -21,7 +21,7 @@ Additional configuration provided includes:
 - Font size
 - Theme selection
 
-More info about the tool via our videos
+More info about the tool via our 21+ videos
 
 https://www.youtube.com/playlist?list=PLlloYVGq5pS7KfhUhcQaUAGV28kmA2OSt
 
