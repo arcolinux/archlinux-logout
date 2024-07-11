@@ -202,6 +202,8 @@ def _get_logout():
         return "pkill xmonad"
     elif desktop in ("dwm", "/usr/share/xsessions/dwm"):
         return "pkill dwm"
+    elif desktop in ("flexi", "/usr/share/xsessions/flexi"):
+        return "pkill flexi"
     elif desktop in ("i3", "/usr/share/xsessions/i3"):
         return "pkill i3"
     elif desktop in ("i3-with-shmlog", "/usr/share/xsessions/i3-with-shmlog"):
@@ -253,7 +255,7 @@ def _get_logout():
     elif desktop in ("newm", "/usr/share/wayland-sessions/newm"):
         return "pkill newm"
     elif desktop:
-        return "pkill awesome | pkill nimdow| pkill bspwm | pkill cwm |  pkill dwm | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill sway | pkill wayfire | pkill newm | pkill river"
+        return "pkill awesome | pkill nimdow| pkill bspwm | pkill cwm |  pkill dwm | pkill flexi | pkill dusk | pkill fvwm3 | pkill herbstluftwm | pkill i3 | pkill icewm | pkill jwm | pkill leftwm | pkill lxqt | pkill openbox | pkill qtile | pkill spectrwm | pkill wmderland | pkill xmonad | pkill worm | pkill berry | pkill Hypr | pkill hypr | pkill sway | pkill wayfire | pkill newm | pkill river"
     return None
 
 
