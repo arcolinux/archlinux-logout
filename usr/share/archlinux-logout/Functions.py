@@ -204,6 +204,8 @@ def _get_logout():
         return "pkill dwm"
     elif desktop in ("flexi", "/usr/share/xsessions/flexi"):
         return "pkill flexi"
+    elif desktop in ("sunset", "/usr/share/xsessions/sunset"):
+        return "pkill sunset"
     elif desktop in ("i3", "/usr/share/xsessions/i3"):
         return "pkill i3"
     elif desktop in ("i3-with-shmlog", "/usr/share/xsessions/i3-with-shmlog"):
