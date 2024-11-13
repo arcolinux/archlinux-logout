@@ -251,11 +251,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imagesh.set_from_pixbuf(psh)
             self.lbl1.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Shutdown (S)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Shutdown ({data})</span>'
             )
         elif data == self.binds.get("restart"):
             pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -267,11 +263,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imager.set_from_pixbuf(pr)
             self.lbl2.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Reboot (R)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Reboot ({data})</span>'
             )
         elif data == self.binds.get("suspend"):
             ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -283,11 +275,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.images.set_from_pixbuf(ps)
             self.lbl3.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Suspend (U)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Suspend ({data})</span>'
             )
         elif data == self.binds.get("lock"):
             plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -299,11 +287,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imagelk.set_from_pixbuf(plk)
             self.lbl4.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Lock (K)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Lock ({data})</span>'
             )
         elif data == self.binds.get("logout"):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -315,11 +299,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imagelo.set_from_pixbuf(plo)
             self.lbl5.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Logout (L)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Logout ({data})</span>'
             )
         elif data == self.binds.get("cancel"):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -331,11 +311,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imagec.set_from_pixbuf(plo)
             self.lbl6.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Cancel (ESC)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Cancel ({data})</span>'
             )
         elif data == self.binds.get("hibernate"):
             plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -347,11 +323,7 @@ class TransparentWindow(Gtk.Window):
             )
             self.imageh.set_from_pixbuf(plo)
             self.lbl7.set_markup(
-                '<span size="'
-                + str(self.font)
-                + '000" foreground="'
-                + self.hover
-                + '">Hibernate (H)</span>'
+                f'<span size="{str(self.font)}000" foreground="{self.hover}">Hibernate ({data})</span>'
             )
         elif data == self.binds.get("settings"):
             pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -377,7 +349,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imagesh.set_from_pixbuf(psh)
                 self.lbl1.set_markup(
-                    '<span size="' + str(self.font) + '000">Shutdown (S)</span>'
+                    f'<span size="{str(self.font)}000">Shutdown ({data})</span>'
                 )
             elif data == self.binds.get("restart"):
                 pr = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -389,7 +361,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imager.set_from_pixbuf(pr)
                 self.lbl2.set_markup(
-                    '<span size="' + str(self.font) + '000">Reboot (R)</span>'
+                    f'<span size="{str(self.font)}000">Reboot ({data})</span>'
                 )
             elif data == self.binds.get("suspend"):
                 ps = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -401,7 +373,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.images.set_from_pixbuf(ps)
                 self.lbl3.set_markup(
-                    '<span size="' + str(self.font) + '000">Suspend (U)</span>'
+                    f'<span size="{str(self.font)}000">Suspend ({data})</span>'
                 )
             elif data == self.binds.get("lock"):
                 plk = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -413,7 +385,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imagelk.set_from_pixbuf(plk)
                 self.lbl4.set_markup(
-                    '<span size="' + str(self.font) + '000">Lock (K)</span>'
+                    f'<span size="{str(self.font)}000">Lock ({data})</span>'
                 )
             elif data == self.binds.get("logout"):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -425,7 +397,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imagelo.set_from_pixbuf(plo)
                 self.lbl5.set_markup(
-                    '<span size="' + str(self.font) + '000">Logout (L)</span>'
+                    f'<span size="{str(self.font)}000">Logout ({data})</span>'
                 )
             elif data == self.binds.get("cancel"):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -437,7 +409,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imagec.set_from_pixbuf(plo)
                 self.lbl6.set_markup(
-                    '<span size="' + str(self.font) + '000">Cancel (ESC)</span>'
+                    f'<span size="{str(self.font)}000">Cancel ({data})</span>'
                 )
             elif data == self.binds.get("hibernate"):
                 plo = GdkPixbuf.Pixbuf().new_from_file_at_size(
@@ -449,7 +421,7 @@ class TransparentWindow(Gtk.Window):
                 )
                 self.imageh.set_from_pixbuf(plo)
                 self.lbl7.set_markup(
-                    '<span size="' + str(self.font) + '000">Hibernate (H)</span>'
+                    f'<span size="{str(self.font)}000">Hibernate ({data})</span>'
                 )
             elif data == self.binds.get("settings"):
                 pset = GdkPixbuf.Pixbuf().new_from_file_at_size(
