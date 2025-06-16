@@ -1,5 +1,9 @@
 # ArchLinux logout
 
+# This app will continue to be supported in a slimmed-down version on my personal GitHub here.
+
+https://github.com/erikdubois/archlinux-logout
+
 This app depends on the following packages.
 
 depends=('python-psutil' 'libwnck3' 'python-cairo' 'betterlockscreen' 'python-distro')
