@@ -1,6 +1,6 @@
 # ArchLinux logout
 
-# This app will continue to be supported in a slimmed-down version on my personal GitHub here.
+# This app will continue to be supported on my personal GitHub here.
 
 https://github.com/erikdubois/archlinux-logout
 
